@@ -152,7 +152,7 @@ body {
   border: 0;
   background: none;
   color: var(--rpl-neutral-00);
-  font: 700 14px/14px var(--rpl-font);
+  font: 600 14px/14px var(--rpl-font);
   letter-spacing: 0.0168em;
   text-decoration: none;
   cursor: pointer;
@@ -179,7 +179,7 @@ body {
 .banner__panel a {
   padding: 12px 24px;
   color: var(--rpl-neutral-00);
-  font: 700 14px/14px var(--rpl-font);
+  font: 600 14px/14px var(--rpl-font);
   letter-spacing: 0.0168em;
   text-decoration: none;
 }
@@ -391,7 +391,7 @@ body {
 /* Figma keeps the header row at 28px even for the 24px lead heading, so the row
    still measures 68px — the glyphs are unaffected. */
 .accordion__heading--lead .accordion__label {
-  font: 700 24px/28px var(--rpl-font);
+  font: 600 24px/28px var(--rpl-font);
   letter-spacing: 0.016em;
 }
 .accordion__heading--alt .accordion__label { color: var(--rpl-primary); }
@@ -492,7 +492,7 @@ body {
 .footer__section-title {
   margin: 0;
   padding: 16px 0;
-  font: 700 16px/16px var(--rpl-font);
+  font: 600 16px/16px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }
@@ -504,7 +504,7 @@ body {
   font: 400 14px/20px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
-  text-decoration: none;
+  text-decoration: underline;
 }
 .footer__links a:hover,
 .footer__required-links a:hover { text-decoration: underline; }
@@ -522,7 +522,7 @@ body {
 
 .footer__acknowledgement-text {
   margin: 0;
-  font: 700 16px/24px var(--rpl-font);
+  font: 600 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }

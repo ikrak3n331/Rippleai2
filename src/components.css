@@ -29,7 +29,7 @@
   background: var(--rpl-accent);
   color: var(--rpl-primary);
   padding: 0 16px;
-  font: 700 32px/48px var(--rpl-font);
+  font: 600 32px/48px var(--rpl-font);
   letter-spacing: 0.008em;
 }
 
@@ -72,7 +72,7 @@
 
 .intro-banner__title {
   margin: 0 0 8px;
-  font: 700 24px/32px var(--rpl-font);
+  font: 600 24px/32px var(--rpl-font);
   letter-spacing: 0.014em;
   color: var(--rpl-type-default);
 }
@@ -86,7 +86,7 @@
 .journey { display: flex; flex-direction: column; gap: 16px; flex: 0 0 328px; }
 .journey__heading {
   margin: 0;
-  font: 700 20px/28px var(--rpl-font);
+  font: 600 20px/28px var(--rpl-font);
   letter-spacing: 0.018em;
   color: var(--rpl-type-default);
 }
@@ -155,7 +155,7 @@ a.card:hover .card__heading { text-decoration: underline; }
 }
 .card__heading {
   margin: 0;
-  font: 700 20px/28px var(--rpl-font);
+  font: 600 20px/28px var(--rpl-font);
   letter-spacing: 0.018em;
   color: var(--rpl-type-default);
 }
@@ -175,7 +175,7 @@ a.card:hover .card__heading { text-decoration: underline; }
   align-items: baseline;
   gap: 4px;
   flex-wrap: wrap;
-  font: 700 16px/24px var(--rpl-font);
+  font: 600 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }
@@ -400,7 +400,7 @@ a.card:hover .card__heading { text-decoration: underline; }
 .campaign__content { padding: 32px 16px 16px; }
 .campaign__title {
   margin: 0 0 16px;
-  font: 700 24px/32px var(--rpl-font);
+  font: 600 24px/32px var(--rpl-font);
   letter-spacing: 0.014em;
   color: var(--rpl-type-default);
 }

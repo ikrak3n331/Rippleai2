@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Component gallery — Ripple 2.0 Extended</title>
+  <link rel="icon" href="/src/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body class="compact-footer">
@@ -174,6 +175,83 @@
       <span><svg aria-hidden="true"><use href="#i-arrow-right"></use></svg> arrow right</span>
       <span><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg> exclamation</span>
     </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Hero section</h2>
+    <div class="hero">
+      <div class="hero__inner">
+        <h1 class="hero__title"><span>Page title</span></h1>
+        <p class="hero__intro"><span>Introduction text describing the purpose of this page.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Introduction banner</h2>
+    <div class="intro-banner">
+      <div class="intro-banner__inner">
+        <h2 class="intro-banner__title">Welcome to the service</h2>
+        <p class="intro-banner__text">Brief description of what users can do on this page.</p>
+        <div class="journey">
+          <p class="journey__heading">Journey</p>
+          <a class="journey__link" href="#">Start here <svg class="icon icon--16" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+          <a class="journey__link" href="#">Continue journey <svg class="icon icon--16" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Campaign banner</h2>
+    <div class="campaign">
+      <div class="campaign__content">
+        <h2 class="campaign__title">Campaign title</h2>
+        <p class="campaign__text">Campaign description text goes here with a call to action.</p>
+        <button type="button" class="btn btn--filled">Campaign button</button>
+      </div>
+      <div class="campaign__art"></div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Card grid</h2>
+    <div class="card-grid">
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h3 class="card__heading">First card heading</h3>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic.</p>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h3 class="card__heading">Second card heading</h3>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic.</p>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h3 class="card__heading">Third card heading</h3>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Banner &amp; Navigation</h2>
+    <p class="form__body">The banner is included on every page via the include plugin in <code>partials/banner.html</code>. It contains the VIC logo, system name, menu dropdown, login and search links.</p>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Footer</h2>
+    <p class="form__body">The footer is included on every page via the include plugin in <code>partials/footer.html</code>. It contains navigation links (8 groups × 3 links), Aboriginal and Torres Strait Islander acknowledgement, and Victorian Government logo with copyright.</p>
   </section>
 </main>
 
