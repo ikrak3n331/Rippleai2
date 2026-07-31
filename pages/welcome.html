@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome Page — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<main id="main-content">
+  <div class="hero">
+    <div class="hero__inner">
+      <h1 class="hero__title"><span>Page title</span></h1>
+      <p class="hero__intro"><span>Introduction text</span></p>
+    </div>
+  </div>
+
+  <div class="intro-banner">
+    <div class="intro-banner__inner">
+      <div class="intro-banner__main">
+        <span class="intro-banner__icon"><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg></span>
+        <div>
+          <h2 class="intro-banner__title">Introduction banner title</h2>
+          <p class="intro-banner__text">This is a paragraph of text that adds information to the page in the introduction banner.</p>
+        </div>
+      </div>
+      <nav class="journey" aria-label="Journey links">
+        <h2 class="journey__heading">Journey link heading</h2>
+        <a href="#">This is a journey link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+        <a href="#">This is a journey link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="campaign" aria-label="Campaign">
+    <div class="campaign__content">
+      <h2 class="campaign__title">Campaign banner title</h2>
+      <p class="campaign__text">This is a paragraph of text that adds information to the page in the campaign banner.</p>
+      <button type="button" class="btn btn--filled">Button text</button>
+    </div>
+    <div class="campaign__art" aria-hidden="true"></div>
+  </section>
+
+  <div class="card-band">
+    <div class="card-grid">
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h2 class="card__heading">Heading line 1</h2>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic. These are usually grouped as similar style sets.</p>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h2 class="card__heading">Heading line 1</h2>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic. These are usually grouped as similar style sets.</p>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h2 class="card__heading">Heading line 1</h2>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic. These are usually grouped as similar style sets.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

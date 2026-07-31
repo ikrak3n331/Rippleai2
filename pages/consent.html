@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consent Page — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<div class="page">
+  <div class="page__panel" aria-hidden="true"></div>
+
+  <div class="page__inner">
+    <nav class="progress progress--vertical" aria-label="Form progress">
+      <ol class="progress__list">
+        <li class="step step--active" aria-current="step"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end step--end-tall"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+      </ol>
+    </nav>
+
+    <nav class="progress progress--horizontal" aria-label="Form progress">
+      <ol class="hprogress">
+        <li class="hstep hstep--active" aria-current="step"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+      </ol>
+      <p class="hprogress__label">Consent</p>
+    </nav>
+
+    <main class="form form--consent" id="main-content">
+      <form class="form__content" novalidate>
+        <h1 class="form__title">H2 Page title</h1>
+        <p class="form__intro">Optional introductory paragraph text lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <hr class="form__divider">
+        <h2 class="form__section-heading">H3 section heading </h2>
+
+        <p class="form__body"><strong>I confirm the following:</strong><br>
+          I have read Parts 1 and 2 of this Primary School Nursing Program Information.<br>
+          I have the information l need to make an informed decision about the offer of a school nurse conducting a health assessment of my child.<br>
+          I understand how my child’s personal information and health information, obtained from this survey and from any health assessments conducted, will be collected, used and disclosed within the department, and stored and retained by the department in accordance with the Health Records Act 2001 and Public Records Act 1973.<br>
+          I understand that l may withdraw my consent for my child to participate in the Primary School Nursing Program at any time.<br>
+          I understand that if I do not consent to a direct health assessment but provide information about my child in the questionnaire, the information I provide will be reviewed and responded to by a school nurse.</p>
+
+        <p class="form__body"><strong>Who may sign this consent form on behalf of a child?</strong><br>
+          One of the following people can sign this form:<br>
+          a person with parental responsibility for "major long term issues" as defined in the Family Law Act 1975 (Cth)<br>
+          a person appointed as "guardian" under the Children, Youth and Families Act 2005 (Vic).<br>
+          If neither of the above people are available, an informal carer may sign this form. An informal carer is a relative or other responsible adult with whom the child lives, and who has day to day care of the child. Informal carers should sign an 'Informal Carer' statutory declaration.</p>
+
+        <p class="form__body"><strong>Withdrawing consent</strong><br>
+          You may withdraw consent to your child receiving services under the Primary School Nursing Program at any time, by writing to your child's school nurse. Before withdrawing consent, we recommend discussing this first with school staff or the School Nursing Program Manager for your region.<br>
+          Withdrawing consent means that services under the Primary School Nursing Program will cease from the time the school nurse receives the withdrawal. Where there are safety concerns or risks, other activities may occur.<br>
+          For more information, please contact the School Nursing Program Manager at your local regional department office, locations <a href="#">www.vic.gov.au/office-locations-department-education</a></p>
+
+        <fieldset class="field" style="border:0;margin:0;padding:0">
+          <legend class="field__label">Form label <span class="field__required" aria-hidden="true">*</span><span class="sr-only">(required)</span></legend>
+          <p class="field__hint">Hint text</p>
+          <div class="field__control choice-group">
+            <label class="choice"><input type="radio" name="consent" value="yes"> Yes</label>
+            <label class="choice"><input type="radio" name="consent" value="no"> No</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="form__actions">
+        <div class="form__actions-left">
+          <a class="text-button" href="#">Cancel</a>
+          <a class="text-button" href="#">Save</a>
+        </div>
+        <div class="form__actions-right">
+          <button type="button" class="btn btn--outline">Button text</button>
+          <button type="button" class="btn btn--filled">Button text</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review and Submit — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="compact-footer">
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<div class="page">
+  <div class="page__panel" aria-hidden="true"></div>
+
+  <div class="page__inner">
+    <!-- The Review step shows a three-row rail: two complete, one current -->
+    <nav class="progress progress--vertical" aria-label="Form progress">
+      <ol class="progress__list">
+        <li class="step step--active"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end" aria-current="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+      </ol>
+    </nav>
+
+    <nav class="progress progress--horizontal" aria-label="Form progress">
+      <ol class="hprogress">
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep hstep--active" aria-current="step"><span class="hstep__dot"></span></li>
+      </ol>
+      <p class="hprogress__label">Review and Submit</p>
+    </nav>
+
+    <main class="form form--review" id="main-content">
+      <div class="summary">
+        <h1 class="summary__heading">Review and Submit</h1>
+        <hr class="summary__rule">
+        <p class="summary__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+
+        <div class="accordion" data-accordion>
+          <button type="button" class="accordion__toggle" data-accordion-toggle aria-expanded="false">Open all</button>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-1" id="rev-btn-1">
+                <span class="accordion__label">Student Details</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="rev-1" role="region" aria-labelledby="rev-btn-1" hidden>
+              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-2" id="rev-btn-2">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="rev-2" role="region" aria-labelledby="rev-btn-2" hidden>
+              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-3" id="rev-btn-3">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="rev-3" role="region" aria-labelledby="rev-btn-3" hidden>
+              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-4" id="rev-btn-4">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="rev-4" role="region" aria-labelledby="rev-btn-4" hidden>
+              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__actions">
+        <div class="form__actions-left">
+          <a class="text-button" href="#">Cancel</a>
+          <a class="text-button" href="#">Save</a>
+        </div>
+        <div class="form__actions-right">
+          <button type="button" class="btn btn--outline">Button text</button>
+          <button type="button" class="btn btn--filled">Button text</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

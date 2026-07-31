@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard (WIP) — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="compact-footer">
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<main id="main-content">
+  <div class="hero hero--short">
+    <div class="hero__inner">
+      <h1 class="hero__title"><span>Page title</span></h1>
+      <p class="hero__intro"><span>Introduction text</span></p>
+    </div>
+  </div>
+
+  <div class="intro-banner">
+    <div class="intro-banner__inner">
+      <div class="intro-banner__main">
+        <span class="intro-banner__icon"><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg></span>
+        <div>
+          <h2 class="intro-banner__title">Introduction banner title</h2>
+          <p class="intro-banner__text">This is a paragraph of text that adds information to the page in the introduction banner.</p>
+        </div>
+      </div>
+      <nav class="journey" aria-label="Journey links">
+        <h2 class="journey__heading">Journey link heading</h2>
+        <a href="#">This is a journey link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+        <a href="#">This is a journey link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="dash" aria-label="Applications">
+    <div class="dash__inner" data-tabs>
+      <div class="tabs" role="tablist" aria-label="Applications">
+        <button class="tabs__tab" role="tab" id="tab-current" aria-controls="panel-current" aria-selected="true">Current applications</button>
+        <button class="tabs__tab" role="tab" id="tab-historical" aria-controls="panel-historical" aria-selected="false" tabindex="-1">Historical applications</button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-current" aria-labelledby="tab-current">
+        <h2 class="tabpanel__title">There are no current applications</h2>
+        <p class="tabpanel__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-historical" aria-labelledby="tab-historical" hidden>
+        <h2 class="tabpanel__title">There are no historical applications</h2>
+        <p class="tabpanel__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

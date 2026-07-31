@@ -1,0 +1,672 @@
+@import "./components.css";
+
+/* ==========================================================================
+   Privacy Page — Ripple 2.0 Extended (Salesforce page examples)
+   Values taken from the Figma file's own node data, not eyeballed.
+   Breakpoints mirror the five templates on the Privacy Page section:
+   320 / 992 / 1200 / 1600 / 1920.
+   ========================================================================== */
+
+/* The VIC typeface. Only the four upright weights the Privacy Page uses are
+   included; Light/ExtraLight and the italics exist in the source but are unused
+   here. Licensed font — do not redistribute with a public deploy. */
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Ripple 2.0 colour styles, by their names in the library */
+  --rpl-primary: #201547;              /* Ripple 2.0/Primary/Primary */
+  --rpl-neutral-00: #ffffff;           /* Ripple 2.0/Neutral/00 */
+  --rpl-neutral-100: #f5f5f5;          /* Ripple 2.0/Neutral/100 */
+  --rpl-type-default: #1a1a1a;         /* Ripple 2.0/Type/Default */
+  --rpl-type-link: #004c97;            /* Ripple 2.0/Type/Link/Link */
+  --rpl-accent-alt: #e7f8f9;           /* Ripple 2.0/Accent/Accent Alt */
+  --rpl-divider: #e6e6e6;
+  --rpl-footer-rule: #003174;
+  --rpl-footer-core-rule: #0052c2;
+  --rpl-icon-blue: #0052c2;
+  --rpl-outline-border: rgba(85, 80, 124, 0.2);
+
+  /* Progress indicator */
+  --step-active: #066afe;
+  --step-idle: #c9c9c9;
+  --step-label: #2e2e2e;
+  --hstep-active: #1589ee;
+  --hstep-idle: #dddbda;
+  --hstep-label: #080707;
+
+  --rpl-font: "VIC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --step-font: "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Layout constants from the annotation: "Content remains centrally aligned,
+     with a max-width of 1200px." */
+  --content-max: 1200px;
+  --panel-inset: 272px;   /* grey panel width inside the content box */
+  --progress-inset: 42px; /* progress indicator left offset inside content */
+  --progress-gap: 101px;  /* gap between progress column and form */
+  --form-max: 770px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--rpl-font);
+  background: var(--rpl-neutral-00);
+  color: var(--rpl-type-default);
+}
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.icon { display: block; fill: currentColor; }
+.icon--12 { width: 12px; height: 12px; }
+.icon--16 { width: 16px; height: 16px; }
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--rpl-neutral-00);
+  color: var(--rpl-type-link);
+  font: 700 16px/16px var(--rpl-font);
+  border-radius: 4px;
+  transition: top 120ms ease-in;
+}
+.skip-link:focus { top: 8px; }
+
+:focus-visible { outline: 3px solid var(--rpl-icon-blue); outline-offset: 2px; }
+
+/* ==========================================================================
+   Salesforce Banner Menu
+   Desktop 84px tall, 12px/40px padding. 992–1199 is 70px. Mobile 76px, 8/16.
+   ========================================================================== */
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--rpl-primary);
+  padding: 8px 16px;
+  min-height: 76px;
+}
+
+.banner__branding { display: flex; align-items: center; gap: 22px; }
+
+.banner__logo { display: block; line-height: 0; }
+.banner__logo-mark {
+  display: block;
+  width: 74px;
+  height: 42px;
+  color: var(--rpl-neutral-00);
+  fill: currentColor;
+}
+
+.banner__rule { display: none; width: 2px; height: 30px; background: var(--rpl-neutral-00); }
+
+.banner__system {
+  display: none;
+  font: 500 18px/1.2 var(--rpl-font);
+  color: var(--rpl-neutral-00);
+}
+
+.banner__nav { display: flex; align-items: center; gap: 6px; }
+
+.banner__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 60px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  color: var(--rpl-neutral-00);
+  font: 700 14px/14px var(--rpl-font);
+  letter-spacing: 0.0168em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.banner__item:hover .banner__item-text { text-decoration: underline; }
+
+.banner__item--login { display: none; }
+.banner__item-text--search { display: none; }
+
+.banner__chevron { transition: transform 150ms ease; }
+.banner__item--menu[aria-expanded="true"] .banner__chevron { transform: rotate(180deg); }
+
+.banner__panel {
+  position: absolute;
+  z-index: 20;
+  inset: 100% 0 auto auto;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  background: var(--rpl-primary);
+  padding: 8px 0 16px;
+}
+.banner__panel[hidden] { display: none; }
+.banner__panel a {
+  padding: 12px 24px;
+  color: var(--rpl-neutral-00);
+  font: 700 14px/14px var(--rpl-font);
+  letter-spacing: 0.0168em;
+  text-decoration: none;
+}
+.banner__panel a:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   Page shell
+   ========================================================================== */
+
+.page { position: relative; background: var(--rpl-neutral-00); }
+
+/* Grey progress panel. Scales with the viewport on ultra-wide screens while the
+   content stays centred — see the 07/08/2025 annotation on the Figma page. */
+.page__panel { display: none; }
+
+.page__inner {
+  position: relative;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px 60px;
+}
+
+/* ==========================================================================
+   Progress Indicator
+   ========================================================================== */
+
+.progress--vertical { display: none; }
+
+/* 34px below the 76px mobile banner, 44px in from the viewport edge */
+.progress--horizontal {
+  width: 100%;
+  padding: 34px 32px 32px;
+}
+
+.hprogress {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hstep { position: relative; display: flex; align-items: center; flex: 1 1 auto; }
+.hstep:last-child { flex: 0 0 auto; }
+/* 2px connector between dots */
+.hstep:not(:last-child)::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 2px;
+  background: var(--hstep-idle);
+}
+.hstep__dot {
+  position: relative;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--rpl-neutral-00);
+}
+.hstep__dot::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--hstep-idle);
+}
+.hstep--active .hstep__dot {
+  background: var(--hstep-active);
+  box-shadow: 0 0 0 3px var(--rpl-neutral-00);
+}
+.hstep--active .hstep__dot::before { background: var(--rpl-neutral-00); }
+
+.hprogress__label {
+  margin: 7px 0 0;
+  text-align: center;
+  font: 500 14px/17px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--hstep-label);
+}
+
+/* Vertical variant (desktop) */
+.progress__list { margin: 0; padding: 0; list-style: none; }
+
+.step { display: flex; align-items: center; gap: 8px; height: 44px; }
+.step__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 16px;
+  width: 16px;
+}
+.step__bar { width: 2px; height: 14px; background: var(--step-idle); }
+.step__bar--empty { background: transparent; }
+.step__dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+.step__dot::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--step-idle);
+}
+.step--active .step__dot { background: var(--step-active); }
+.step--active .step__dot::before { background: var(--rpl-neutral-00); }
+
+.step__label {
+  padding: 12px 0;
+  font: 400 13px/18px var(--step-font);
+  color: var(--step-label);
+}
+
+/* The last three rows use the "Step end" variant: a top connector but no bottom
+   one, and the first of them is 64px tall with its content bottom-aligned. */
+.step--end-tall { height: 64px; align-items: flex-end; }
+
+/* ==========================================================================
+   Form Container
+   ========================================================================== */
+
+.form {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form__content { display: flex; flex-direction: column; gap: 16px; }
+
+.form__title {
+  margin: 0;
+  font: 500 24px/32px var(--rpl-font);
+  letter-spacing: 0.016em;
+  color: var(--rpl-primary);
+}
+
+.form__intro {
+  margin: 0;
+  font: 400 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: #000000;
+}
+
+.form__divider {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--rpl-divider);
+}
+
+.form__section-heading {
+  margin: 0;
+  font: 500 20px/28px var(--rpl-font);
+  letter-spacing: 0.018em;
+  color: var(--rpl-primary);
+}
+
+.form__body {
+  margin: 0;
+  font: 400 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+
+/* ---------- Accordion ---------- */
+
+.accordion { display: flex; flex-direction: column; }
+
+.accordion__toggle {
+  align-self: flex-end;
+  border: 0;
+  background: none;
+  padding: 0 28px 12px;
+  font: 700 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-link);
+  cursor: pointer;
+}
+.accordion__toggle:hover { text-decoration: underline; }
+
+.accordion__item { background: var(--rpl-neutral-00); }
+
+.accordion__heading { margin: 0; }
+
+.accordion__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 68px; /* 28px header row + 20px padding top and bottom */
+  padding: 20px 28px;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.accordion__label {
+  flex: 1 1 auto;
+  font: 400 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+/* Figma keeps the header row at 28px even for the 24px lead heading, so the row
+   still measures 68px — the glyphs are unaffected. */
+.accordion__heading--lead .accordion__label {
+  font: 700 24px/28px var(--rpl-font);
+  letter-spacing: 0.016em;
+}
+.accordion__heading--alt .accordion__label { color: var(--rpl-primary); }
+
+.accordion__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  color: var(--rpl-icon-blue);
+}
+.accordion__icon .icon { transition: transform 150ms ease; }
+.accordion__button[aria-expanded="true"] .accordion__icon .icon { transform: rotate(180deg); }
+
+.accordion__panel { padding: 0 28px 20px; }
+.accordion__panel[hidden] { display: none; }
+
+/* ---------- Salesforce Form Buttons ---------- */
+
+.form__actions { display: flex; flex-direction: column; gap: 40px; }
+
+/* On mobile the Figma order is Next, Previous, Save, Cancel — the reverse of the
+   desktop DOM order in both groups. */
+.form__actions-left {
+  order: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 40px;
+}
+
+.form__actions-right {
+  order: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+}
+
+.text-button {
+  font: 600 16px/16px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-link);
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 16px 20px;
+  border-radius: 1000px;
+  font: 700 16px/16px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  cursor: pointer;
+}
+.btn--filled {
+  background: var(--rpl-primary);
+  border: 0;
+  color: var(--rpl-neutral-00);
+}
+.btn--outline {
+  background: var(--rpl-neutral-00);
+  /* Figma draws the 2px stroke inside the 48px button, so trim the padding */
+  padding: 14px 18px;
+  border: 2px solid var(--rpl-outline-border);
+  color: var(--rpl-primary);
+}
+.btn--filled:hover { background: #2c1d63; }
+.btn--outline:hover { border-color: rgba(85, 80, 124, 0.4); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+/* Figma draws both footer rules as inside strokes, so they must not add height.
+   inset box-shadow keeps the footer at its designed 512px. */
+.footer {
+  background: var(--rpl-accent-alt);
+  box-shadow: inset 0 4px 0 var(--rpl-footer-rule);
+  color: var(--rpl-type-default);
+}
+
+.footer__nav,
+.footer__acknowledgement,
+.footer__core { padding-left: 16px; padding-right: 16px; }
+
+.footer__columns {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 24px 0 0;
+}
+
+.footer__group { min-width: 0; }
+
+.footer__section-title {
+  margin: 0;
+  padding: 16px 0;
+  font: 700 16px/16px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+
+.footer__links { margin: 0; padding: 0; list-style: none; }
+.footer__links li { display: flex; align-items: center; min-height: 32px; }
+.footer__links a,
+.footer__required-links a {
+  font: 400 14px/20px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+  text-decoration: none;
+}
+.footer__links a:hover,
+.footer__required-links a:hover { text-decoration: underline; }
+
+.footer__acknowledgement-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 0;
+}
+.footer__flags { display: flex; gap: 8px; flex: 0 0 auto; padding: 4px 0; }
+.footer__flag { display: block; width: 57px; height: 40px; }
+
+.footer__acknowledgement-text {
+  margin: 0;
+  font: 700 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+
+.footer__core { box-shadow: inset 0 1px 0 var(--rpl-footer-core-rule); }
+.footer__core-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0 32px;
+}
+.footer__core-links { display: flex; flex-direction: column; gap: 8px; }
+
+.footer__required-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer__required-links a { line-height: 14px; }
+
+.footer__copyright {
+  margin: 0;
+  font: 400 14px/14px var(--rpl-font);
+  letter-spacing: 0.0168em;
+  color: var(--rpl-type-default);
+}
+
+.footer__logos { display: flex; justify-content: flex-end; gap: 24px; }
+.footer__logo {
+  display: block;
+  width: 74px;
+  height: 42px;
+  color: var(--rpl-primary);
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   >= 992px — the desktop templates
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  /* The 992–1199 banner variant is 70px tall: 60px menu items, 5px block padding,
+     40px in from the left and 20px from the right. */
+  .banner { min-height: 70px; padding: 5px 20px 5px 40px; }
+  .banner__rule { display: block; }
+  .banner__system { display: block; }
+  .banner__item--login { display: flex; }
+  .banner__item-text--search { display: inline; }
+  .banner__nav { gap: 0; }
+
+  .page__panel {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: calc(max(0px, (100vw - var(--content-max)) / 2) + var(--panel-inset));
+    background: var(--rpl-neutral-100);
+  }
+
+  .page__inner {
+    flex-direction: row;
+    padding: 0 0 60px var(--progress-inset);
+    gap: var(--progress-gap);
+  }
+
+  .progress--horizontal { display: none; }
+  .progress--vertical {
+    display: block;
+    align-self: flex-start;
+    flex: 0 0 189px;
+    width: 189px;
+    /* Across every desktop template the progress column starts 116px from the
+       top of the page and the form 130px, so the offsets below the banner vary
+       with the banner's height. */
+    margin-top: 46px;
+  }
+
+  .form { margin-top: 60px; max-width: 600px; }
+
+  .form__title { font-size: 32px; line-height: 40px; letter-spacing: 0.014em; }
+  .form__section-heading { font-size: 24px; line-height: 32px; letter-spacing: 0.016em; }
+
+  .accordion__heading--lead .accordion__label { font-size: 24px; line-height: 28px; }
+
+  .form__actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    min-height: 48px;
+  }
+  .form__actions-left { order: 1; flex-direction: row; gap: 40px; }
+  .form__actions-right { order: 2; flex-direction: row; gap: 20px; }
+  .btn { min-width: 132px; }
+
+  /* 992–1199 footer variant: 64px gutters, three columns, 24px gap */
+  .footer__nav,
+  .footer__acknowledgement,
+  .footer__core { padding-left: 64px; padding-right: 64px; }
+
+  .footer__columns { grid-template-columns: repeat(3, 1fr); column-gap: 24px; }
+
+  .footer__core-inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .footer__core-links { align-items: flex-start; }
+}
+
+/* >= 1200px — the form column reaches its full 770px */
+@media (min-width: 1200px) {
+  .banner { min-height: 84px; padding: 12px 40px; }
+  .progress--vertical { margin-top: 32px; }
+  .form { margin-top: 46px; max-width: var(--form-max); }
+
+  /* 1200+ footer variant: 80px gutters, four columns, 28px gap */
+  .footer__nav,
+  .footer__acknowledgement,
+  .footer__core { padding-left: 80px; padding-right: 80px; }
+
+  .footer__columns { grid-template-columns: repeat(4, 1fr); column-gap: 28px; }
+  .footer__core-inner { min-height: 104px; } /* 98px in the 992–1199 variant */
+}
+
+/* >= 1600px — the grey panel and progress column step outward */
+@media (min-width: 1600px) {
+  :root {
+    --panel-inset: 324px;
+    --progress-inset: 94px;
+    --progress-gap: 96px;
+  }
+  .form { margin-top: 41px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

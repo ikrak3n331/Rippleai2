@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Page — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<div class="page">
+  <div class="page__panel" aria-hidden="true"></div>
+
+  <div class="page__inner">
+    <nav class="progress progress--vertical" aria-label="Form progress">
+      <ol class="progress__list">
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--active" aria-current="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+      </ol>
+    </nav>
+
+    <nav class="progress progress--horizontal" aria-label="Form progress">
+      <ol class="hprogress">
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep hstep--active" aria-current="step"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+      </ol>
+      <p class="hprogress__label">Your details</p>
+    </nav>
+
+    <main class="form" id="main-content">
+      <form class="form__content" novalidate>
+        <h1 class="form__title">H2 Page title</h1>
+        <p class="form__intro">Form introductory paragraph text lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <hr class="form__divider">
+        <h2 class="form__section-heading">Form heading</h2>
+
+        <div class="field">
+          <label class="field__label" for="f-text">Form label <span class="field__required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+          <span class="field__hint" id="f-text-hint">Hint text</span>
+          <span class="field__control"><input class="input" id="f-text" type="text" placeholder="Placeholder text" aria-describedby="f-text-hint" required></span>
+        </div>
+
+        <div class="form-cols">
+          <div class="field">
+            <label class="field__label" for="f-pre">Form label</label>
+            <span class="field__hint">Hint text</span>
+            <span class="field__control input-affix">
+              <span class="input-affix__box">Pre</span>
+              <input class="input" id="f-pre" type="text" placeholder="Input text">
+            </span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-suf">Form label</label>
+            <span class="field__hint">Hint text</span>
+            <span class="field__control input-affix">
+              <input class="input" id="f-suf" type="text" placeholder="Input text">
+              <span class="input-affix__box">Suf</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="f-select">Form label <span class="field__required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+          <span class="field__hint">Hint text</span>
+          <span class="field__control select-wrap">
+            <select class="select" id="f-select" required>
+              <option value="">Select</option>
+              <option>Text label</option>
+              <option>Text label</option>
+              <option>Text label</option>
+            </select>
+            <svg aria-hidden="true"><use href="#i-chevron-16"></use></svg>
+          </span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="f-area">Form label</label>
+          <span class="field__hint">Hint text</span>
+          <span class="field__control">
+            <textarea class="textarea" id="f-area" placeholder="Placeholder text" data-word-count="f-area-count"></textarea>
+          </span>
+          <span class="field__count" id="f-area-count" aria-live="polite">You have 0 words</span>
+        </div>
+
+        <fieldset class="field" style="border:0;margin:0;padding:0">
+          <legend class="field__label">Form label</legend>
+          <div class="field__control choice-group">
+            <label class="choice"><input type="checkbox" name="terms">
+              I acknowledge I have read and agree to the Terms and Conditions of [Program Name] <span class="field__required" aria-hidden="true">*</span></label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="form__actions">
+        <div class="form__actions-left">
+          <a class="text-button" href="#">Cancel</a>
+          <a class="text-button" href="#">Save</a>
+        </div>
+        <div class="form__actions-right">
+          <button type="button" class="btn btn--outline">Button text</button>
+          <button type="button" class="btn btn--filled">Button text</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

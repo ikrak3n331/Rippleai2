@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component gallery — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="compact-footer">
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<main id="main-content" class="plain gallery">
+  <h1 class="form__title">Component gallery</h1>
+  <p class="form__intro">Every component built for these page examples, with the Ripple token behind each colour.
+    The Figma <strong>Components</strong> page is a specification board of breakpoint frames rather than a page,
+    so this is a live equivalent.</p>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Buttons</h2>
+    <div class="gallery__row">
+      <button type="button" class="btn btn--filled">Button text</button>
+      <button type="button" class="btn btn--outline">Button text</button>
+      <a class="text-button" href="#">Cancel</a>
+      <a class="text-button" href="#">Save</a>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Typography</h2>
+    <p class="form__title" style="margin:0">H2 Page title — VIC Medium 32/40</p>
+    <p class="form__section-heading" style="margin:0">H3 Section heading — VIC Medium 24/32</p>
+    <p class="form__body">Body copy — VIC Regular 16/24, <code>Ripple 2.0/Type/Default</code> #1a1a1a.</p>
+    <p class="card__topic">Metadata — VIC Regular 14/14, <code>Ripple 2.0/Neutral/600</code> #666666.</p>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Form controls</h2>
+
+    <div class="field">
+      <label class="field__label" for="g-text">Form label <span class="field__required" aria-hidden="true">*</span></label>
+      <span class="field__hint">Hint text</span>
+      <span class="field__control"><input class="input" id="g-text" type="text" placeholder="Placeholder text"></span>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="g-select">Form label</label>
+      <span class="field__control select-wrap">
+        <select class="select" id="g-select"><option>Select</option><option>Text label</option></select>
+        <svg aria-hidden="true"><use href="#i-chevron-16"></use></svg>
+      </span>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="g-area">Form label</label>
+      <span class="field__control"><textarea class="textarea" id="g-area" placeholder="Placeholder text" data-word-count="g-count"></textarea></span>
+      <span class="field__count" id="g-count" aria-live="polite">You have 0 words</span>
+    </div>
+
+    <fieldset class="field" style="border:0;margin:0;padding:0">
+      <legend class="field__label">Radio Button</legend>
+      <div class="field__control choice-group">
+        <label class="choice"><input type="radio" name="g-radio"> Yes</label>
+        <label class="choice"><input type="radio" name="g-radio"> No</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="field" style="border:0;margin:0;padding:0">
+      <legend class="field__label">Checkbox</legend>
+      <div class="field__control choice-group">
+        <label class="choice"><input type="checkbox"> Text label</label>
+      </div>
+    </fieldset>
+
+    <div class="field">
+      <label class="field__label" for="g-pre">Input with affixes</label>
+      <span class="field__control input-affix">
+        <span class="input-affix__box">Pre</span>
+        <input class="input" id="g-pre" type="text" placeholder="Input text">
+        <span class="input-affix__box">Suf</span>
+      </span>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Accordion</h2>
+    <div class="accordion" data-accordion>
+      <button type="button" class="accordion__toggle" data-accordion-toggle aria-expanded="false">Open all</button>
+      <div class="accordion__item">
+        <h3 class="accordion__heading accordion__heading--lead">
+          <button type="button" class="accordion__button" aria-expanded="false" aria-controls="g-acc-1" id="g-acc-btn-1">
+            <span class="accordion__label">Accordion heading</span>
+            <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="g-acc-1" role="region" aria-labelledby="g-acc-btn-1" hidden>
+          <p class="form__body">Panel content.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <h3 class="accordion__heading">
+          <button type="button" class="accordion__button" aria-expanded="false" aria-controls="g-acc-2" id="g-acc-btn-2">
+            <span class="accordion__label">Accordion heading</span>
+            <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="g-acc-2" role="region" aria-labelledby="g-acc-btn-2" hidden>
+          <p class="form__body">Panel content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Tabs</h2>
+    <div data-tabs>
+      <div class="tabs" role="tablist" aria-label="Example tabs">
+        <button class="tabs__tab" role="tab" id="g-tab-1" aria-controls="g-panel-1" aria-selected="true">Tab label</button>
+        <button class="tabs__tab" role="tab" id="g-tab-2" aria-controls="g-panel-2" aria-selected="false" tabindex="-1">Tab label</button>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="g-panel-1" aria-labelledby="g-tab-1">
+        <p class="tabpanel__text">First panel.</p>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="g-panel-2" aria-labelledby="g-tab-2" hidden>
+        <p class="tabpanel__text">Second panel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Progress indicator</h2>
+    <div class="gallery__row gallery__row--top">
+      <nav class="progress progress--vertical gallery__progress" aria-label="Vertical progress example">
+        <ol class="progress__list">
+          <li class="step step--active"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+          <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+          <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        </ol>
+      </nav>
+      <div style="flex:1 1 260px;max-width:320px">
+        <ol class="hprogress">
+          <li class="hstep hstep--active"><span class="hstep__dot"></span></li>
+          <li class="hstep"><span class="hstep__dot"></span></li>
+          <li class="hstep"><span class="hstep__dot"></span></li>
+        </ol>
+        <p class="hprogress__label">Welcome</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Card</h2>
+    <div class="card-grid">
+      <a class="card" href="#">
+        <img class="card__media" src="/src/img/card-media.webp" alt="">
+        <div class="card__text">
+          <p class="card__topic">Topic</p>
+          <h3 class="card__heading">Heading line 1</h3>
+          <p class="card__body">Paragraph default. Cards contain actionable content about a single topic.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="gallery__section">
+    <h2 class="form__section-heading">Icons</h2>
+    <div class="gallery__row gallery__icons">
+      <span><svg aria-hidden="true"><use href="#i-chevron-16"></use></svg> chevron</span>
+      <span><svg aria-hidden="true"><use href="#i-search"></use></svg> search</span>
+      <span><svg aria-hidden="true"><use href="#i-user-circle"></use></svg> user circle</span>
+      <span><svg aria-hidden="true"><use href="#i-arrow-right"></use></svg> arrow right</span>
+      <span><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg> exclamation</span>
+    </div>
+  </section>
+</main>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Page — Ripple 2.0 Extended</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!--#include partials/banner.html -->
+
+<!-- ============ Page body ============ -->
+<div class="page">
+  <div class="page__panel" aria-hidden="true"></div>
+
+  <div class="page__inner">
+
+    <!-- Progress Indicator — vertical on desktop -->
+    <nav class="progress progress--vertical" aria-label="Form progress">
+      <ol class="progress__list">
+        <li class="step step--active" aria-current="step">
+          <span class="step__rail">
+            <span class="step__bar step__bar--top step__bar--empty"></span>
+            <span class="step__dot"></span>
+            <span class="step__bar step__bar--bottom"></span>
+          </span>
+          <span class="step__label">Text label</span>
+        </li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end step--end-tall"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--end"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+      </ol>
+    </nav>
+
+    <!-- Progress Indicator — horizontal on mobile -->
+    <nav class="progress progress--horizontal" aria-label="Form progress">
+      <ol class="hprogress">
+        <li class="hstep hstep--active" aria-current="step"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+        <li class="hstep"><span class="hstep__dot"></span></li>
+      </ol>
+      <p class="hprogress__label">Welcome</p>
+    </nav>
+
+    <!-- Form Container -->
+    <main class="form" id="main-content">
+      <div class="form__content">
+        <h1 class="form__title">H2 Page title</h1>
+        <p class="form__intro">Form introductory paragraph text lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <hr class="form__divider">
+        <h2 class="form__section-heading">H3 Section heading </h2>
+        <p class="form__body">Through this digital form you will be asked to provide required information relating to the placement. All mandatory fields must be completed.</p>
+
+        <div class="accordion" data-accordion>
+          <button type="button" class="accordion__toggle" data-accordion-toggle aria-expanded="false">Open all</button>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading accordion__heading--lead">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="acc-panel-1" id="acc-btn-1">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1" hidden></div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading accordion__heading--alt">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="acc-panel-2" id="acc-btn-2">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2" hidden></div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="acc-panel-3" id="acc-btn-3">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3" hidden></div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="acc-panel-4" id="acc-btn-4">
+                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h3>
+            <div class="accordion__panel" id="acc-panel-4" role="region" aria-labelledby="acc-btn-4" hidden></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salesforce Form Buttons -->
+      <div class="form__actions">
+        <div class="form__actions-left">
+          <a class="text-button" href="#">Cancel</a>
+          <a class="text-button" href="#">Save</a>
+        </div>
+        <div class="form__actions-right">
+          <button type="button" class="btn btn--outline">Button text</button>
+          <button type="button" class="btn btn--filled">Button text</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!--#include partials/footer.html -->
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
