@@ -345,7 +345,7 @@ a.card:hover .card__heading { text-decoration: underline; }
 }
 .summary__edit {
   align-self: flex-end;
-  font: 700 16px/24px var(--rpl-font);
+  font: 600 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-link);
   text-decoration: underline;
@@ -411,18 +411,11 @@ a.card:hover .card__heading { text-decoration: underline; }
   color: var(--rpl-type-default);
 }
 
-/* The decorative panel is the Ripple brand gradient from the Figma vector */
-.campaign__art {
-  min-height: 120px;
-  background: linear-gradient(115deg, #0057c2, #825dff, #ef4a81, #e57200, #ffc166, #f9e062);
-}
-
 @media (min-width: 992px) {
   .campaign { flex-direction: row; align-items: stretch; min-height: 284px; }
   .campaign__content { flex: 1 1 auto; padding: 48px 80px 16px; }
   .campaign__title { font-size: 32px; line-height: 40px; }
   .campaign__text { font-size: 20px; line-height: 28px; }
-  .campaign__art { flex: 0 0 600px; align-self: flex-end; height: 120px; min-height: 0; }
 }
 
 /* ---------- Dashboard tab band ---------- */

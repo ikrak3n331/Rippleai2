@@ -49,7 +49,7 @@
   --rpl-accent-alt: #e7f8f9;           /* Ripple 2.0/Accent/Accent Alt */
   --rpl-divider: #e6e6e6;
   --rpl-footer-rule: #003174;
-  --rpl-footer-core-rule: #0052c2;
+  --rpl-footer-core-rule: #e6e6e6;
   --rpl-icon-blue: #0052c2;
   --rpl-outline-border: rgba(85, 80, 124, 0.2);
 
@@ -98,7 +98,7 @@ body {
   padding: 12px 20px;
   background: var(--rpl-neutral-00);
   color: var(--rpl-type-link);
-  font: 700 16px/16px var(--rpl-font);
+  font: 600 16px/16px var(--rpl-font);
   border-radius: 4px;
   transition: top 120ms ease-in;
 }
@@ -357,7 +357,7 @@ body {
   border: 0;
   background: none;
   padding: 0 28px 12px;
-  font: 700 16px/24px var(--rpl-font);
+  font: 600 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-link);
   cursor: pointer;
@@ -444,7 +444,7 @@ body {
   min-height: 48px;
   padding: 16px 20px;
   border-radius: 1000px;
-  font: 700 16px/16px var(--rpl-font);
+  font: 600 16px/16px var(--rpl-font);
   letter-spacing: 0.0192em;
   cursor: pointer;
 }
@@ -641,7 +641,7 @@ body {
 
 /* >= 1200px — the form column reaches its full 770px */
 @media (min-width: 1200px) {
-  .banner { min-height: 84px; padding: 12px 40px; }
+  .banner { min-height: 70px; padding: 5px 40px; }
   .progress--vertical { margin-top: 32px; }
   .form { margin-top: 46px; max-width: var(--form-max); }
 
