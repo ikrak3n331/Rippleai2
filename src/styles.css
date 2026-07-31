@@ -67,6 +67,9 @@
   /* Layout constants from the annotation: "Content remains centrally aligned,
      with a max-width of 1200px." */
   --content-max: 1200px;
+  /* Single content column shared by every band — hero, intro, cards, footer —
+     so their left and right edges line up the way vic.gov.au does. */
+  --content-inner: 1040px;
   --panel-inset: 272px;   /* grey panel width inside the content box */
   --progress-inset: 42px; /* progress indicator left offset inside content */
   --progress-gap: 101px;  /* gap between progress column and form */
@@ -138,7 +141,9 @@ body {
   display: none;
   font: 500 18px/1.2 var(--rpl-font);
   color: var(--rpl-neutral-00);
+  text-decoration: none;
 }
+.banner__system:hover { text-decoration: underline; }
 
 .banner__nav { display: flex; align-items: center; gap: 6px; }
 
@@ -364,7 +369,19 @@ body {
 }
 .accordion__toggle:hover { text-decoration: underline; }
 
-.accordion__item { background: var(--rpl-neutral-00); }
+/* Each row is separated by a hairline; the expanded row instead carries a 4px
+   Accent rule down its left edge. The border is always present so opening a
+   row does not shift its content sideways — only the colour changes. */
+.accordion__item {
+  background: var(--rpl-neutral-00);
+  border-bottom: 1px solid var(--rpl-divider);
+  border-left: 4px solid transparent;
+}
+
+.accordion__item:has(.accordion__button[aria-expanded="true"]) {
+  border-left-color: var(--rpl-accent);
+  border-bottom-color: transparent;
+}
 
 .accordion__heading { margin: 0; }
 
@@ -382,19 +399,14 @@ body {
   color: inherit;
 }
 
+/* The templates give each row a different weight/size/colour; the built page
+   uses one treatment for all four, as the Salesforce screenshot does. */
 .accordion__label {
   flex: 1 1 auto;
-  font: 400 16px/24px var(--rpl-font);
-  letter-spacing: 0.0192em;
-  color: var(--rpl-type-default);
+  font: 600 20px/28px var(--rpl-font);
+  letter-spacing: 0.018em;
+  color: var(--rpl-primary);
 }
-/* Figma keeps the header row at 28px even for the 24px lead heading, so the row
-   still measures 68px — the glyphs are unaffected. */
-.accordion__heading--lead .accordion__label {
-  font: 600 24px/28px var(--rpl-font);
-  letter-spacing: 0.016em;
-}
-.accordion__heading--alt .accordion__label { color: var(--rpl-primary); }
 
 .accordion__icon {
   flex: 0 0 auto;
@@ -480,7 +492,7 @@ body {
 .footer__core { padding-left: 16px; padding-right: 16px; }
 
 .footer__columns {
-  max-width: var(--content-max);
+  max-width: var(--content-inner);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -507,10 +519,10 @@ body {
   text-decoration: underline;
 }
 .footer__links a:hover,
-.footer__required-links a:hover { text-decoration: underline; }
+.footer__required-links a:hover { text-decoration: none; }
 
 .footer__acknowledgement-inner {
-  max-width: var(--content-max);
+  max-width: var(--content-inner);
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
@@ -529,7 +541,7 @@ body {
 
 .footer__core { box-shadow: inset 0 1px 0 var(--rpl-footer-core-rule); }
 .footer__core-inner {
-  max-width: var(--content-max);
+  max-width: var(--content-inner);
   margin: 0 auto;
   display: flex;
   flex-direction: column;

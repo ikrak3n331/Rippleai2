@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Salesforce page examples — Ripple 2.0 Extended</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/src/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/styles.css">
 </head>
@@ -24,11 +25,13 @@
 <div class="intro-banner">
   <div class="intro-banner__inner">
     <div class="intro-banner__main">
+      <!-- Icon kept for reuse — uncomment to restore:
       <span class="intro-banner__icon"><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg></span>
+      -->
       <div>
         <h2 class="intro-banner__title">Eight page examples</h2>
         <p class="intro-banner__text">Each page below is a working build of the corresponding page in the
-          <strong>☁️ Salesforce</strong> section of the Ripple 2.0 Extended design system. Layout, colour and type
+          Salesforce section of the Ripple 2.0 Extended design system. Layout, colour and type
           are read from the Figma file's node data rather than traced from screenshots.</p>
       </div>
     </div>
@@ -42,6 +45,15 @@
 
 <main id="main-content" class="card-band">
   <div class="card-grid">
+
+    <a class="card" href="/pages/login.html">
+      <img class="card__media" src="/src/img/card-media.webp" alt="">
+      <div class="card__text">
+        <p class="card__topic">Log in</p>
+        <h2 class="card__heading">Log in</h2>
+        <p class="card__body">Standalone entry point — no banner or footer. Brand wedge, centred card, username and password.</p>
+      </div>
+    </a>
 
     <a class="card" href="/pages/welcome.html">
       <img class="card__media" src="/src/img/card-media.webp" alt="">
@@ -94,15 +106,6 @@
         <p class="card__topic">(WIP) Dashboard</p>
         <h2 class="card__heading">Dashboard</h2>
         <p class="card__body">Logged-in view with tabbed current and historical applications, and an empty state.</p>
-      </div>
-    </a>
-
-    <a class="card" href="/pages/email.html">
-      <img class="card__media" src="/src/img/card-media.webp" alt="">
-      <div class="card__text">
-        <p class="card__topic">Email Notification</p>
-        <h2 class="card__heading">Email notification</h2>
-        <p class="card__body">Transactional email template — fixed 1040px body, header band, content blocks and disclaimer.</p>
       </div>
     </a>
 

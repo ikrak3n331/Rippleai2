@@ -14,14 +14,15 @@
 
 .hero {
   background: url("./img/ripple-hero.webp") center / cover no-repeat;
-  padding: 64px 0 40px;
+  padding: 64px 16px 40px;
   border-bottom: 1px solid var(--rpl-divider);
 }
 
+/* Gutters live on the band, the column caps at --content-inner, so the hero
+   copy starts on the same x as the cards and the footer below it. */
 .hero__inner {
-  max-width: var(--content-max);
+  max-width: var(--content-inner);
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 .hero__title { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -43,8 +44,7 @@
 }
 
 @media (min-width: 992px) {
-  .hero { padding: 212px 0 80px; }
-  .hero__inner { padding: 0 80px; }
+  .hero { padding: 212px 80px 80px; }
   .hero__title span { font-size: 56px; line-height: 80px; }
   .hero__intro span { font-size: 24px; line-height: 32px; }
 }
@@ -58,7 +58,7 @@
 }
 
 .intro-banner__inner {
-  max-width: 1040px;
+  max-width: var(--content-inner);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -120,7 +120,7 @@
 @media (min-width: 992px) { .card-band { padding: 60px 80px; } }
 
 .card-grid {
-  max-width: var(--content-max);
+  max-width: var(--content-inner);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -138,9 +138,9 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 150ms ease, transform 150ms ease;
+  transition: box-shadow 150ms ease;
 }
-a.card:hover { box-shadow: 0 2px 8px #1a1a1a29; transform: translateY(-2px); }
+a.card:hover { box-shadow: 0 2px 8px #1a1a1a29; }
 a.card:hover .card__heading { text-decoration: underline; }
 
 .card__media { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
@@ -419,6 +419,97 @@ a.card:hover .card__heading { text-decoration: underline; }
   .campaign__text { font-size: 20px; line-height: 28px; }
 }
 
+/* ---------- Log in page ----------
+   Structurally unlike every other page: no banner, no footer, no content
+   max-width. One full-bleed Accent Alt panel, the brand wedge pinned to the
+   right edge, the logo top-left, and a single 434px card centred in the
+   viewport. Frames: Login Standard XL/L/M/S/XS, all 886px tall. */
+
+.login-body { background: var(--rpl-accent-alt); }
+
+.login {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 104px 16px 40px;
+  background: var(--rpl-accent-alt);
+}
+
+/* Only the leftmost 207px of the 413px wedge is ever on screen, so the
+   viewBox is pre-clipped to that strip and pinned to the top-right. */
+.login__flourish {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 207px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.login__logo { position: absolute; top: 32px; left: 50%; transform: translateX(-50%); line-height: 0; }
+/* Figma uses the 168x49 "VICTORIA Department of Education" lockup, which is not
+   in the sprite; the 74x42 state logo is substituted at its own aspect. */
+.login__logo-mark { display: block; width: 86px; height: 49px; fill: var(--rpl-primary); }
+
+/* The Log in frames use the .Input symbol's grey fill and 12/20 padding,
+   rather than the white inputs the in-page forms use. */
+.login .input {
+  background: var(--rpl-neutral-100);
+  padding: 12px 20px;
+}
+
+.login__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 434px;
+  padding: 30px;
+  background: var(--rpl-neutral-00);
+  border-radius: 12px;
+}
+
+.login__content { display: flex; flex-direction: column; gap: 20px; }
+
+.login__system {
+  margin: 0;
+  font: 500 24px/32px var(--rpl-font);
+  letter-spacing: 0.016em;
+  color: var(--rpl-primary);
+  text-align: center;
+}
+
+.login__heading {
+  margin: 0;
+  font: 500 20px/28px var(--rpl-font);
+  letter-spacing: 0.018em;
+  color: var(--rpl-primary);
+  text-align: center;
+}
+
+/* The card's own 18px rhythm between the two fields and the button, inside
+   the Content Area's 20px stack. */
+.login__field + .login__field { margin-top: -2px; }
+
+.login__submit { width: 100%; }
+
+.login__forgot,
+.login__register {
+  margin: 0;
+  font: 400 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  text-align: center;
+}
+.login__forgot a { color: var(--rpl-type-link); }
+.login__register { color: #0d0d0d; }
+.login__register a { color: var(--rpl-type-link); }
+
+@media (min-width: 576px) {
+  .login__logo { left: 36px; transform: none; }
+}
+
 /* ---------- Dashboard tab band ---------- */
 
 /* The dashboard hero is 344px rather than the landing page's 424px */
@@ -433,75 +524,6 @@ a.card:hover .card__heading { text-decoration: underline; }
 @media (min-width: 992px) { .dash { padding: 48px 80px 56px; } }
 
 .dash__inner { max-width: 1040px; margin: 0 auto; }
-
-/* ---------- Email notification template ---------- */
-
-.email-page { background: var(--rpl-neutral-100); padding: 32px 16px 60px; }
-
-.email-page__note {
-  max-width: 1040px;
-  margin: 0 auto 24px;
-  font: 400 14px/20px var(--rpl-font);
-  letter-spacing: 0.0192em;
-  color: var(--rpl-neutral-600);
-}
-
-.email {
-  max-width: 1040px;
-  margin: 0 auto;
-  background: var(--rpl-neutral-00);
-  border: 1px solid var(--rpl-border);
-}
-
-.email__header {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  background: var(--rpl-primary);
-  padding: 21px 40px;
-}
-.email__logo { display: block; width: 74px; height: 42px; color: var(--rpl-neutral-00); fill: currentColor; }
-.email__rule { width: 2px; height: 30px; background: var(--rpl-neutral-00); }
-.email__system { font: 500 18px/1.2 var(--rpl-font); color: var(--rpl-neutral-00); }
-
-.email__body { padding: 40px; display: flex; flex-direction: column; gap: 24px; }
-
-.email__title {
-  margin: 0;
-  font: 500 32px/40px var(--rpl-font);
-  letter-spacing: 0.014em;
-  color: var(--rpl-primary);
-}
-.email__text {
-  margin: 0;
-  font: 400 16px/24px var(--rpl-font);
-  letter-spacing: 0.0192em;
-  color: var(--rpl-type-default);
-}
-.email__cta { margin: 0; }
-.email__cta .btn { text-decoration: none; }
-
-.email__signoff { padding: 0 40px 32px; }
-
-.email__disclaimer {
-  padding: 24px 40px 32px;
-  background: var(--rpl-accent-alt);
-  border-top: 1px solid var(--rpl-footer-core-rule);
-}
-.email__disclaimer p {
-  margin: 0 0 8px;
-  font: 400 14px/20px var(--rpl-font);
-  letter-spacing: 0.0192em;
-  color: var(--rpl-type-default);
-}
-.email__disclaimer p:last-child { margin: 0; }
-
-@media (max-width: 575px) {
-  .email__header { padding: 16px; gap: 12px; }
-  .email__body { padding: 24px 16px; }
-  .email__signoff { padding: 0 16px 24px; }
-  .email__disclaimer { padding: 16px; }
-}
 
 /* ---------- Component gallery ---------- */
 

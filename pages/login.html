@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — Ripple 2.0 Extended</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/src/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="login-body">
+<!--#include partials/sprite.html -->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- The Log in page carries no banner or footer: the Figma frames are a single
+     full-bleed panel with the brand flourish and one centred card. -->
+<div class="login">
+  <!-- BrandDE-Triangle: a 413x887 wedge anchored so only its leftmost 207px
+       shows, identical at every breakpoint (1200-993, 992-785, 768-561,
+       576-369, 320-113 all give 207). -->
+  <svg class="login__flourish" viewBox="0 0 207 887" preserveAspectRatio="xMaxYMin slice"
+       aria-hidden="true" focusable="false">
+    <polygon points="0,0 207,0 207,444.6" fill="var(--rpl-primary)"/>
+  </svg>
+
+  <a class="login__logo" href="/" aria-label="Victoria State Government — home">
+    <svg class="login__logo-mark" role="img" aria-hidden="true"><use href="#i-vic-logo"></use></svg>
+  </a>
+
+  <main id="main-content" class="login__container">
+    <form class="login__content" action="#" method="post">
+      <h1 class="login__system">System title</h1>
+      <p class="login__heading">Login</p>
+
+      <div class="field login__field">
+        <label class="field__label" for="login-user">
+          Form label <span class="field__required">(Required)</span>
+        </label>
+        <span class="field__hint">Hint text</span>
+        <span class="field__control">
+          <input class="input" id="login-user" name="username" type="text"
+                 autocomplete="username" placeholder="Placeholder text" required>
+        </span>
+      </div>
+
+      <div class="field login__field">
+        <label class="field__label" for="login-pass">
+          Form label <span class="field__required">(Required)</span>
+        </label>
+        <span class="field__hint">Hint text</span>
+        <span class="field__control">
+          <input class="input" id="login-pass" name="password" type="password"
+                 autocomplete="current-password" placeholder="Placeholder text" required>
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn--filled login__submit">Button text</button>
+
+      <p class="login__forgot"><a href="#">Forgot password?</a></p>
+      <p class="login__register">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </main>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

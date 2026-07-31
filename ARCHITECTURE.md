@@ -17,13 +17,13 @@ PAGES.md                  # Details about each page
 REBUILD.md                # How to regenerate or extend
 
 pages/                    # The eight pages (built from Figma)
+├── login.html            # Log in — standalone, no banner or footer
 ├── privacy.html          # Privacy Page — form + progress rail
 ├── consent.html          # Consent Page — long-form consent + radio
 ├── welcome.html          # Welcome Page — hero + campaign + cards
 ├── form.html             # Form Page — text, select, textarea, checkbox
 ├── review.html           # Form Completion — review & submit
 ├── dashboard.html        # (WIP) Dashboard — tabs + empty state
-├── email.html            # Email Notification — transactional email
 └── components.html       # Component gallery — live reference
 
 partials/                 # Shared markup (injected at build time)
@@ -33,7 +33,7 @@ partials/                 # Shared markup (injected at build time)
 
 src/
 ├── styles.css            # Page-level styles, tokens, layout
-├── components.css        # Shared component styles (hero, cards, forms, tabs, email, etc.)
+├── components.css        # Shared component styles (hero, cards, forms, tabs, login, etc.)
 ├── main.js               # Vanilla JS: accordion, tabs, banner menu, word count
 ├── fonts/                # VIC typeface WOFF2 files (4 weights)
 └── img/                  # Placeholder imagery (ripple-hero.webp, card-media.webp)
@@ -68,7 +68,7 @@ This means:
 
 **`src/components.css` (~600 lines)**
 - Shared component styles used across multiple pages
-- Hero sections, introduction banners, cards, form controls, tabs, email template, component gallery
+- Hero sections, introduction banners, cards, form controls, tabs, login page, component gallery
 - All responsive, all tied to Ripple tokens defined in styles.css
 
 Both files are imported in the page `<head>`:
