@@ -354,6 +354,20 @@ body {
   color: var(--rpl-type-default);
 }
 
+/* Inline links in prose take the Ripple link colour rather than the browser
+   default blue. Applies to body copy wherever it appears, panels included. */
+.form__body a,
+.form__intro a,
+.accordion__panel a,
+.tabpanel__text a {
+  color: var(--rpl-type-link);
+  text-decoration: underline;
+}
+.form__body a:hover,
+.form__intro a:hover,
+.accordion__panel a:hover,
+.tabpanel__text a:hover { text-decoration: none; }
+
 /* ---------- Accordion ---------- */
 
 .accordion { display: flex; flex-direction: column; }
