@@ -326,9 +326,11 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   color: var(--rpl-type-default);
   cursor: pointer;
 }
+/* The underline matches the selected tab's own label colour rather than the
+   black the template used. */
 .tabs__tab[aria-selected="true"] {
   color: var(--rpl-type-link);
-  border-bottom-color: #000000;
+  border-bottom-color: var(--rpl-type-link);
 }
 
 .tabpanel { padding-top: 30px; }
