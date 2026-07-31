@@ -301,9 +301,10 @@ body {
   color: var(--step-label);
 }
 
-/* The last three rows use the "Step end" variant: a top connector but no bottom
-   one, and the first of them is 64px tall with its content bottom-aligned. */
-.step--end-tall { height: 64px; align-items: flex-end; }
+/* The Figma templates give the last three rows the "Step end" variant — a top
+   connector but no bottom one, and a 64px first row — which leaves visible
+   breaks in the rail. The rail is drawn continuously instead: every row gets
+   both connectors, and only the very last one closes off. */
 
 /* ==========================================================================
    Form Container

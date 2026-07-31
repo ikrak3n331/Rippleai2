@@ -450,9 +450,9 @@ a.card:hover .card__heading { text-decoration: underline; }
 }
 
 .login__logo { position: absolute; top: 32px; left: 50%; transform: translateX(-50%); line-height: 0; }
-/* Figma uses the 168x49 "VICTORIA Department of Education" lockup, which is not
-   in the sprite; the 74x42 state logo is substituted at its own aspect. */
-.login__logo-mark { display: block; width: 86px; height: 49px; fill: var(--rpl-primary); }
+/* The banner's state logo, at the sprite's own 105.812x60 aspect. The symbol
+   paints with fill="currentColor", so the colour comes from `color`. */
+.login__logo-mark { display: block; width: 86px; height: 49px; color: var(--rpl-primary); }
 
 /* The Log in frames use the .Input symbol's grey fill and 12/20 padding,
    rather than the white inputs the in-page forms use. */
