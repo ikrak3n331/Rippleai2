@@ -491,14 +491,17 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   background: var(--rpl-accent-alt);
 }
 
-/* Only the leftmost 207px of the 413px wedge is ever on screen, so the
-   viewBox is pre-clipped to that strip and pinned to the top-right. */
+/* Only the leftmost 207px of the 413px wedge is ever on screen, so the viewBox
+   is pre-clipped to that strip and pinned to the top-right. The box matches the
+   viewBox exactly (207x887) so nothing is scaled or cropped — scaling to the
+   viewport height shaved a few pixels off the left and blunted the apex, which
+   has to sit precisely on the top corner. .login clips the overflow. */
 .login__flourish {
   position: absolute;
   top: 0;
   right: 0;
   width: 207px;
-  height: 100%;
+  height: 887px;
   pointer-events: none;
 }
 
