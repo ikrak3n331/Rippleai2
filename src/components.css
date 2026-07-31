@@ -190,7 +190,13 @@ a.card:hover .card__heading { text-decoration: underline; }
   color: var(--rpl-type-default);
 }
 
-.field__control { margin-top: 16px; }
+/* Figma's Input Field stacks label/hint at gap4 and the control at gap16.
+   .field already contributes 4px between every child, so the control adds 12
+   to land on 16 whether or not a hint is present. */
+.field__control { margin-top: 12px; }
+/* A <legend> is not a flex item, so it contributes no gap — a control sitting
+   straight after one has to supply the whole 16 itself. */
+fieldset.field > legend + .field__control { margin-top: 16px; }
 
 /* Radio + checkbox: 24px control, 12px gap to label, 20px between rows */
 .choice-group { display: flex; flex-direction: column; gap: 20px; }
@@ -235,13 +241,18 @@ a.card:hover .card__heading { text-decoration: underline; }
   transform: rotate(-45deg) scale(0.55) translate(2px, -4px);
 }
 
-/* Text inputs, selects, textareas */
+/* Text inputs, selects, textareas.
+   The .Input symbol is 48px tall on a Neutral/100 fill with a 1px #666666
+   inside stroke and 12/20 padding. Figma draws the stroke inside the 48px, so
+   the padding is trimmed to 11px to leave room for the two 1px borders:
+   1 + 11 + 24 + 11 + 1 = 48. Horizontal 20px + 1px border = the 21px inset. */
 .input,
 .select,
 .textarea {
   width: 100%;
-  padding: 11px 16px;
-  background: var(--rpl-neutral-00);
+  min-height: 48px;
+  padding: 11px 20px;
+  background: var(--rpl-neutral-100);
   border: 1px solid var(--rpl-neutral-600);
   border-radius: 4px;
   font: 400 16px/24px var(--rpl-font);
@@ -251,12 +262,12 @@ a.card:hover .card__heading { text-decoration: underline; }
 .input::placeholder,
 .textarea::placeholder { color: var(--rpl-neutral-600); }
 .textarea { min-height: 144px; resize: vertical; }
-.select { appearance: none; padding-right: 48px; }
+.select { appearance: none; padding-right: 52px; }
 
 .select-wrap { position: relative; }
 .select-wrap svg {
   position: absolute;
-  right: 16px;
+  right: 20px;
   top: 50%;
   width: 16px;
   height: 16px;
@@ -454,12 +465,6 @@ a.card:hover .card__heading { text-decoration: underline; }
    paints with fill="currentColor", so the colour comes from `color`. */
 .login__logo-mark { display: block; width: 86px; height: 49px; color: var(--rpl-primary); }
 
-/* The Log in frames use the .Input symbol's grey fill and 12/20 padding,
-   rather than the white inputs the in-page forms use. */
-.login .input {
-  background: var(--rpl-neutral-100);
-  padding: 12px 20px;
-}
 
 .login__container {
   position: relative;
