@@ -54,10 +54,10 @@
   --rpl-outline-border: rgba(85, 80, 124, 0.2);
 
   /* Progress indicator */
-  --step-active: #066afe;
+  --step-active: #004c97;   /* Ripple 2.0/Type/Link/Link */
   --step-idle: #c9c9c9;
   --step-label: #2e2e2e;
-  --hstep-active: #1589ee;
+  --hstep-active: #004c97;  /* matches the vertical rail */
   --hstep-idle: #dddbda;
   --hstep-label: #080707;
 
@@ -319,6 +319,17 @@ body {
 }
 
 .form__content { display: flex; flex-direction: column; gap: 16px; }
+
+/* The header block (title, intro, divider) stacks at gap16, but the "Form set"
+   below it stacks its blocks at gap32. The container already supplies 16, so
+   field blocks add another 16 on top. */
+.form__content > .field + .field,
+.form__content > .field + .form-cols,
+.form__content > .form-cols + .field,
+.form__content > .form-cols + .form-cols,
+.form__content > .form__section-heading + .field,
+.form__content > .form__section-heading + .form-cols,
+.form__content > .form__body + .field { margin-top: 16px; }
 
 .form__title {
   margin: 0;
