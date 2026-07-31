@@ -413,7 +413,8 @@ a.card:hover .card__heading { text-decoration: underline; }
 
 @media (min-width: 992px) {
   .campaign { flex-direction: row; align-items: stretch; min-height: 284px; }
-  .campaign__content { flex: 1 1 auto; padding: 48px 80px 16px; }
+  /* The art panel is gone, so hold the copy to half the banner width */
+  .campaign__content { flex: 0 0 50%; max-width: 50%; padding: 48px 80px 16px; }
   .campaign__title { font-size: 32px; line-height: 40px; }
   .campaign__text { font-size: 20px; line-height: 28px; }
 }
