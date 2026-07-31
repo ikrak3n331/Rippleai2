@@ -19,13 +19,19 @@
   <div class="page__panel" aria-hidden="true"></div>
 
   <div class="page__inner">
-    <!-- The Review step shows a three-row rail: two complete, one current -->
+    <!-- Every step up to Review and Submit is complete; Completion is still to come. -->
     <nav class="progress progress--vertical" aria-label="Form progress">
       <ol class="progress__list">
-        <li class="step step--active"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
-        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
-        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Text label</span></li>
-        <li class="step" aria-current="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Text label</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top step__bar--empty"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Consent</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Student Details</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Parent/Carer Details</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Family Details</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Family Events/Issues</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">General Health</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">General Development</span></li>
+        <li class="step step--done"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Strengths and Difficulties</span></li>
+        <li class="step step--active" aria-current="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom"></span></span><span class="step__label">Review and Submit</span></li>
+        <li class="step"><span class="step__rail"><span class="step__bar step__bar--top"></span><span class="step__dot"></span><span class="step__bar step__bar--bottom step__bar--empty"></span></span><span class="step__label">Completion</span></li>
       </ol>
     </nav>
 
@@ -43,56 +49,132 @@
       <div class="summary">
         <h1 class="summary__heading">Review and Submit</h1>
         <hr class="summary__rule">
-        <p class="summary__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <p class="summary__lead">Thank you for completing the Student Entrant Health Questionnaire.
+          Please review your details below, edit if required and submit the form for processing.</p>
 
         <div class="accordion" data-accordion>
           <button type="button" class="accordion__toggle" data-accordion-toggle aria-expanded="false">Open all</button>
 
           <div class="accordion__item">
             <h2 class="accordion__heading">
-              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-1" id="rev-btn-1">
+              <button type="button" class="accordion__button" aria-expanded="true" aria-controls="rev-1" id="rev-btn-1">
                 <span class="accordion__label">Student Details</span>
                 <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
               </button>
             </h2>
-            <div class="accordion__panel" id="rev-1" role="region" aria-labelledby="rev-btn-1" hidden>
-              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            <div class="accordion__panel" id="rev-1" role="region" aria-labelledby="rev-btn-1">
+              <dl class="qa">
+                <div class="qa__row"><dt>Student name</dt><dd>Millie Moo</dd></div>
+                <div class="qa__row"><dt>What is your child’s date of birth?</dt><dd>03/01/2017</dd></div>
+                <div class="qa__row"><dt>What is your child’s gender?</dt><dd>Female</dd></div>
+                <div class="qa__row"><dt>How many weeks did the pregnancy last?</dt><dd>Not provided</dd></div>
+                <div class="qa__row"><dt>Street Address</dt><dd>23 Balemo Crescent, WINDALE NSW 2306</dd></div>
+                <div class="qa__row"><dt>School Name</dt><dd>Alfredton Primary School, ALFREDTON – Primary</dd></div>
+                <div class="qa__row"><dt>Campus</dt><dd>Alfredton Primary School, ALFREDTON – Primary</dd></div>
+                <div class="qa__row"><dt>Class</dt><dd>TestPrepClass2025</dd></div>
+              </dl>
             </div>
           </div>
 
           <div class="accordion__item">
             <h2 class="accordion__heading">
               <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-2" id="rev-btn-2">
-                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__label">Parent Details</span>
                 <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
               </button>
             </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
             <div class="accordion__panel" id="rev-2" role="region" aria-labelledby="rev-btn-2" hidden>
-              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+              <dl class="qa">
+                <div class="qa__row"><dt>Parent/Carer name</dt><dd>Jane Moo</dd></div>
+                <div class="qa__row"><dt>Relationship to child</dt><dd>Mother</dd></div>
+                <div class="qa__row"><dt>Contact number</dt><dd>0400 000 000</dd></div>
+                <div class="qa__row"><dt>Email address</dt><dd>jane.moo@example.vic.gov.au</dd></div>
+              </dl>
             </div>
           </div>
 
           <div class="accordion__item">
             <h2 class="accordion__heading">
               <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-3" id="rev-btn-3">
-                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__label">Family Details</span>
                 <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
               </button>
             </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
             <div class="accordion__panel" id="rev-3" role="region" aria-labelledby="rev-btn-3" hidden>
-              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+              <dl class="qa">
+                <div class="qa__row"><dt>Languages spoken at home</dt><dd>English</dd></div>
+                <div class="qa__row"><dt>Number of people in the household</dt><dd>4</dd></div>
+                <div class="qa__row"><dt>Does your child have siblings?</dt><dd>Yes</dd></div>
+              </dl>
             </div>
           </div>
 
           <div class="accordion__item">
             <h2 class="accordion__heading">
               <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-4" id="rev-btn-4">
-                <span class="accordion__label">Accordion heading</span>
+                <span class="accordion__label">Family/Events Issues</span>
                 <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
               </button>
             </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
             <div class="accordion__panel" id="rev-4" role="region" aria-labelledby="rev-btn-4" hidden>
-              <a class="summary__edit" href="/pages/form.html">Edit details</a>
+              <dl class="qa">
+                <div class="qa__row"><dt>Have there been any significant family events?</dt><dd>Not provided</dd></div>
+                <div class="qa__row"><dt>Is there anything else you would like to tell us?</dt><dd>Not provided</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-5" id="rev-btn-5">
+                <span class="accordion__label">General Health</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            <div class="accordion__panel" id="rev-5" role="region" aria-labelledby="rev-btn-5" hidden>
+              <dl class="qa">
+                <div class="qa__row"><dt>Does your child have any allergies?</dt><dd>No</dd></div>
+                <div class="qa__row"><dt>Is your child taking any medication?</dt><dd>No</dd></div>
+                <div class="qa__row"><dt>Has your child had a hearing test?</dt><dd>Yes</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-6" id="rev-btn-6">
+                <span class="accordion__label">General Development</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            <div class="accordion__panel" id="rev-6" role="region" aria-labelledby="rev-btn-6" hidden>
+              <dl class="qa">
+                <div class="qa__row"><dt>Do you have concerns about your child’s speech?</dt><dd>No</dd></div>
+                <div class="qa__row"><dt>Do you have concerns about your child’s learning?</dt><dd>No</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__button" aria-expanded="false" aria-controls="rev-7" id="rev-btn-7">
+                <span class="accordion__label">Strengths and Difficulties</span>
+                <span class="accordion__icon"><svg class="icon icon--16" aria-hidden="true"><use href="#i-chevron-16"></use></svg></span>
+              </button>
+            </h2>
+            <a class="summary__edit" href="/pages/form.html">Edit details</a>
+            <div class="accordion__panel" id="rev-7" role="region" aria-labelledby="rev-btn-7" hidden>
+              <dl class="qa">
+                <div class="qa__row"><dt>Considerate of other people’s feelings</dt><dd>Certainly true</dd></div>
+                <div class="qa__row"><dt>Shares readily with other children</dt><dd>Somewhat true</dd></div>
+                <div class="qa__row"><dt>Generally well behaved</dt><dd>Certainly true</dd></div>
+              </dl>
             </div>
           </div>
         </div>
@@ -104,8 +186,8 @@
           <a class="text-button" href="#">Save</a>
         </div>
         <div class="form__actions-right">
-          <button type="button" class="btn btn--outline">Button text</button>
-          <button type="button" class="btn btn--filled">Button text</button>
+          <button type="button" class="btn btn--outline">Previous</button>
+          <button type="button" class="btn btn--filled">Next</button>
         </div>
       </div>
     </main>

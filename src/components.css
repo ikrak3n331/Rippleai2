@@ -358,12 +358,44 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }
+/* "Edit details" sits on the header row, left of the chevron. It cannot live
+   inside the accordion button (nested interactive), so it is positioned over
+   the row instead, and only shown while that section is open. */
+.summary .accordion__item { position: relative; }
+
 .summary__edit {
-  align-self: flex-end;
-  font: 600 16px/24px var(--rpl-font);
+  position: absolute;
+  top: 0;
+  right: 68px;   /* 28px row padding + 16px chevron + 24px gap */
+  display: none;
+  align-items: center;
+  height: 68px;  /* the collapsed header row */
+  z-index: 1;
+  font: 500 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-link);
   text-decoration: underline;
+}
+.summary .accordion__item:has(.accordion__button[aria-expanded="true"]) .summary__edit { display: flex; }
+.summary__edit:hover { text-decoration: none; }
+
+/* Question / answer pairs inside a review section. */
+.qa { margin: 0; display: flex; flex-direction: column; gap: 16px; }
+.qa__row { display: grid; grid-template-columns: 1fr; gap: 4px; }
+.qa dt {
+  font: 700 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+.qa dd {
+  margin: 0;
+  font: 400 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-type-default);
+}
+
+@media (min-width: 768px) {
+  .qa__row { grid-template-columns: 273px 1fr; gap: 24px; align-items: start; }
 }
 
 /* ---------- Footer variant with the nav block hidden (200px tall) ---------- */
