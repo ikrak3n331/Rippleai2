@@ -18,10 +18,9 @@
   border-bottom: 1px solid var(--rpl-divider);
 }
 
-/* The homepage and welcome page each carry their own photograph; the remaining
-   heroes keep the design system's placeholder ripple. */
+/* The homepage carries its own photograph; the other pages keep the design
+   system's placeholder ripple. */
 .hero--home { background-image: url("./img/hero.jpg"); }
-.hero--welcome { background-image: url("./img/hero-welcome.jpg"); }
 
 /* Gutters live on the band, the column caps at --content-inner, so the hero
    copy starts on the same x as the cards and the footer below it. */
