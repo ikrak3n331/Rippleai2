@@ -62,7 +62,6 @@
   --hstep-label: #080707;
 
   --rpl-font: "VIC", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --step-font: "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Layout constants from the annotation: "Content remains centrally aligned,
      with a max-width of 1200px." */
@@ -312,7 +311,7 @@ body {
 
 .step__label {
   padding: 12px 0;
-  font: 400 13px/18px var(--step-font);
+  font: 400 13px/18px var(--rpl-font);
   color: var(--step-label);
 }
 

@@ -96,13 +96,9 @@ With VIC in place, rendered text advances match the Figma text boxes to sub-pixe
 
 That also confirms Figma's `PERCENT` letter-spacing maps straight to `em`.
 
-The one font still unresolved is **SF Pro**, which the design uses for the vertical
-progress labels (13/18) to match Salesforce Lightning. It isn't in `C:\dep\fonts`,
-so those ten labels fall back to the system UI stack.
-
 ## Deliberate deviations
 
-Five, all flagged rather than silently encoded:
+Seven, all flagged rather than silently encoded:
 
 1. **Form width at 1920.** The Privacy Page's 1920 frame makes the form 700px while its
    own 1200 and 1600 frames both use 770px at the same left offset, so 770px is applied
@@ -122,24 +118,37 @@ Five, all flagged rather than silently encoded:
 5. **`Form Completion` is mostly flow diagrams.** The page is largely journey maps
    annotated with action indicators; the one reusable artefact is the 1200px
    "Review and Submit" frame, which is what `/pages/review.html` builds.
+6. **Progress labels are set in VIC, not SF Pro.** The design uses SF Pro (13/18) for the
+   vertical rail to match Salesforce Lightning. It isn't in `C:\dep\fonts`, and falling
+   back to the system UI stack left one stray typeface on otherwise all-VIC pages, so the
+   rail uses VIC throughout.
+7. **The progress rail is drawn continuously.** The templates give the last three rows the
+   "Step end" variant — a top connector but no bottom one, plus a 64px first row — which
+   left visible breaks in the rail. Every row now carries both connectors at a uniform
+   44px and only the final row closes off.
 
 ## Things worth raising with the design team
 
-Faithfully reproduced, but they look like defects in the source file:
+Spotted in the source file. The first two have since been corrected in the build — see
+*Deliberate deviations* above — but they are worth fixing at the source:
 
 - **Accordion rows have no borders or dividers** and sit on white, over a white page.
   Four collapsed rows are separated only by whitespace, and the boundary between them
   is invisible. The heading typography is also inconsistent — item 1 is Bold 24, item 2
-  Regular 16 in `Primary`, items 3–4 Regular 16 in `Type/Default`.
+  Regular 16 in `Primary`, items 3–4 Regular 16 in `Type/Default`. *(Corrected: rows are
+  divided by a hairline, the open row carries a 4px Accent rule, headings share one
+  treatment.)*
 - **The vertical progress indicator's connector breaks.** The last three rows use the
   "Step end" variant, which has a top connector but no bottom one, so the rail shows
   gaps between rows 8, 9 and 10. The first of those rows is also 64px instead of 44px.
+  *(Corrected: the rail is drawn continuously.)*
 - **Every progress label reads "Text label"** and the accordion headings read
   "Accordion heading" — placeholders were left in the desktop templates, though the
-  320px template does use a real "Welcome" label.
+  320px template does use a real "Welcome" label. *(Privacy and Review now carry real
+  step names and section headings; Consent and Form still show the placeholders.)*
 
-All page copy is reproduced verbatim from the file, placeholders included
-(`{System Name}`, `H2 Page title`, `Link item`, `Section title`, `Button text`).
+Page copy is otherwise reproduced verbatim from the file, placeholders included
+(`H2 Page title`, `Link item`, `Section title`, `Button text`).
 
 ## Structure
 
