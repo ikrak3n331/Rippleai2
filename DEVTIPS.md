@@ -20,6 +20,19 @@ when tips were off, which took the toggle with it and left no way back short of 
 `localStorage`. The keystroke is ignored while a form field has focus and when any modifier
 is held, so typing the letter "d" never trips it.
 
+## The badge
+
+A pill in the same corner as the panel, and a real `<button>` — so the keyboard shortcut is
+never the only way in or out.
+
+**Exactly one of the badge and the panel is on screen at any moment.** The badge shows
+whenever the panel does not: while tips are off, and while tips are on but nothing is
+hovered. It hides the instant a component is hovered and the panel takes its place. That
+keeps the control permanently discoverable without the two ever overlapping.
+
+Its label reports the current state — `Dev tips on — hover any component · D`, or
+`Dev tips off — press D or click here`.
+
 ## How components are matched
 
 Tips map **CSS selectors** to guidance. They do not use `data-` attributes on the markup.

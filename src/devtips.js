@@ -440,19 +440,36 @@ export function initDevTips() {
       <footer class="devtip__foot">press <kbd>D</kbd> to turn tips off</footer>`;
   };
 
+  /* The badge and the panel occupy the same corner, so exactly one of them is on
+     screen at any moment: the panel while a component is hovered, the badge the
+     rest of the time. That keeps the control permanently discoverable without
+     ever letting the two overlap. */
+  const syncBadge = () => {
+    const panelOpen = panel.classList.contains('is-open');
+    badge.classList.toggle('is-open', !panelOpen);
+    badge.setAttribute('aria-hidden', String(panelOpen));
+    badge.innerHTML = enabled
+      ? 'Dev tips on — hover any component · <kbd>D</kbd>'
+      : 'Dev tips off — press <kbd>D</kbd> or click here';
+  };
+
   const show = (tip, el) => {
-    if (current === tip) return;
-    current = tip;
-    render(tip, el);
-    panel.classList.add('is-open');
-    panel.setAttribute('aria-hidden', 'false');
+    if (current !== tip) {
+      current = tip;
+      render(tip, el);
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+    }
+    syncBadge();
   };
 
   const hide = () => {
-    if (!current) return;
-    current = null;
-    panel.classList.remove('is-open');
-    panel.setAttribute('aria-hidden', 'true');
+    if (current) {
+      current = null;
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+    syncBadge();
   };
 
   /* The deepest match wins, so hovering an input reports the input rather than
@@ -488,31 +505,34 @@ export function initDevTips() {
   addEventListener('pointerleave', hide);
   addEventListener('blur', hide);
 
-  /* Brief confirmation, since with tips off there is otherwise nothing on screen
-     to say the shortcut exists or that it worked. */
-  const toast = (msg) => {
-    let el = document.querySelector('.devtip-toast');
-    if (!el) {
-      el = document.createElement('div');
-      el.className = 'devtip-toast';
-      document.body.appendChild(el);
-    }
-    el.textContent = msg;
-    el.classList.add('is-open');
-    clearTimeout(toast.timer);
-    toast.timer = setTimeout(() => el.classList.remove('is-open'), 1800);
+  /* While tips are off the panel never appears, so without this there is nothing
+     on screen to say the feature exists. The badge is the permanent way back --
+     it states the shortcut and is clickable in its own right. */
+  const badge = document.createElement('button');
+  badge.type = 'button';
+  badge.className = 'devtip-badge';
+  badge.innerHTML = 'Dev tips off — press <kbd>D</kbd> or click here';
+  document.body.appendChild(badge);
+
+  const setEnabled = (value) => {
+    enabled = value;
+    localStorage.setItem(STORAGE_KEY, enabled ? 'on' : 'off');
+    if (!enabled) hide();
+    // syncBadge owns the badge's visibility and label -- it keys off whether the
+    // panel is open, not off `enabled`, so the badge shows whenever the panel does not.
+    syncBadge();
   };
+
+  badge.addEventListener('click', () => setEnabled(true));
+  setEnabled(enabled);
 
   addEventListener('keydown', (e) => {
     if (e.key !== 'd' && e.key !== 'D') return;
-    // Never steal the keystroke from a form field or a shortcut.
+    // Never steal the keystroke from a form field or a browser shortcut.
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const t = e.target;
     if (t instanceof Element && t.closest('input, textarea, select, [contenteditable]')) return;
 
-    enabled = !enabled;
-    localStorage.setItem(STORAGE_KEY, enabled ? 'on' : 'off');
-    if (!enabled) hide();
-    toast(enabled ? 'Developer tips on' : 'Developer tips off — press D to restore');
+    setEnabled(!enabled);
   });
 }
