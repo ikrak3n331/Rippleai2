@@ -168,6 +168,15 @@
   .devtip-badge { top: auto; bottom: 12px; right: 12px; }
 }
 
+/* Not shown on phones. Hover does not exist on touch, so the panel could only
+   ever be triggered by focus there, and at this width it covers the very
+   component it is describing. Tablet keeps it -- the bottom dock above leaves
+   enough room, and tablets are commonly driven with a pointer. */
+@media (max-width: 767px) {
+  .devtip,
+  .devtip-badge { display: none !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .devtip,
   .devtip-badge { transition: none; }

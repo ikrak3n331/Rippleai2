@@ -76,10 +76,12 @@ so you can compare intent against reality.
   reporting on, and it never blocks a link underneath it.
 - **Keyboard.** `focusin` shows the tip for the focused element, so tabbing through a form
   surfaces the same guidance.
-- **Mobile.** Below 992px the panel docks to the bottom of the viewport instead of the top
-  right, where it would otherwise cover the content on a narrow screen. Note that hover
-  does not exist on touch, so the overlay is primarily a desktop tool — the *content* still
-  documents mobile behaviour.
+- **Phones — not shown at all.** Below 768px both the panel and the badge are hidden.
+  Hover does not exist on touch, so the panel could only ever be triggered by focus there,
+  and at that width it covers the very component it is describing. The *content* still
+  documents mobile behaviour — resize a desktop window down to read it.
+- **Tablet (768–991px).** Kept, but docked to the bottom of the viewport rather than the
+  top right, where it would crowd the content.
 - **The header shows the current breakpoint** (`≥1200`, `992–1199`, `768–991`, `576–767`,
   `<576`) alongside the hovered element's measured width and height, so resizing the window
   and re-hovering shows the responsive rules taking effect.
