@@ -442,15 +442,31 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
 
 /* ---------- Campaign banner ---------- */
 
+/* Matches the vic.gov.au department-education campaign component: copy held to the
+   content column on the left, photograph bleeding to the viewport edge on the right,
+   with a diagonal left edge that sits further right at the top than at the bottom. */
 .campaign {
+  position: relative;
+  overflow: hidden;
   background: var(--rpl-neutral-00);
-  max-width: var(--content-max);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  border-top: 1px solid var(--rpl-divider);
 }
 
-.campaign__content { padding: 32px 16px 16px; }
+.campaign__inner {
+  max-width: var(--content-inner);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Below 992 the photo stacks under the copy rather than crowding it. */
+.campaign__media {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.campaign__content { padding: 32px 0 24px; }
 .campaign__title {
   margin: 0 0 16px;
   font: 600 24px/32px var(--rpl-font);
@@ -465,11 +481,25 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
 }
 
 @media (min-width: 992px) {
-  .campaign { flex-direction: row; align-items: stretch; min-height: 284px; }
-  /* The art panel is gone, so hold the copy to half the banner width */
-  .campaign__content { flex: 0 0 50%; max-width: 50%; padding: 48px 80px 16px; }
+  .campaign { min-height: 284px; }
+  .campaign__inner { padding: 0; }
+  /* Hold the copy clear of the diagonal. */
+  .campaign__content { max-width: 50%; padding: 56px 0; }
   .campaign__title { font-size: 32px; line-height: 40px; }
   .campaign__text { font-size: 20px; line-height: 28px; }
+
+  /* Pinned to the right edge of the viewport, not the content column, so the photo
+     bleeds off-screen the way it does on vic.gov.au. The polygon's top-left inset is
+     what produces the lean; bottom-left sits flush at 0. */
+  .campaign__media {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 46%;
+    height: 100%;
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
 
 /* ---------- Log in page ----------
