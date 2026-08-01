@@ -2,6 +2,12 @@
 // interactions here follow the design system's documented component states
 // (accordion open/closed, "Open all" toggle, banner menu).
 
+import { initDevTips } from './devtips.js';
+
+// Hover guidance for developers browsing these examples. Matches components by
+// CSS selector, so it covers every page without touching their markup.
+initDevTips();
+
 /* ---------- Banner menu ---------- */
 const menuButton = document.querySelector('.banner__item--menu');
 const menuPanel = document.getElementById('banner-menu-panel');
