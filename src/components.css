@@ -488,17 +488,23 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   .campaign__title { font-size: 32px; line-height: 40px; }
   .campaign__text { font-size: 20px; line-height: 28px; }
 
-  /* Pinned to the right edge of the viewport, not the content column, so the photo
-     bleeds off-screen the way it does on vic.gov.au. The polygon's top-left inset is
-     what produces the lean; bottom-left sits flush at 0. */
+  /* Geometry read off the live rpl-campaign-banner on vic.gov.au rather than eyeballed.
+     The panel is 6 of the 12 grid columns of the 1200px container plus the bleed to the
+     viewport edge -- a constant 614px there once the container caps out -- anchored
+     right and overhanging the banner top by 12px.
+
+     The clip is the part that matters: the first vertex sits 44% DOWN the left edge and
+     rises to the top-right corner, so the slanted edge cuts across the top of the panel.
+     Starting that vertex on the top edge instead leaves a wedge of image above the
+     slant, which is what made the crop read as a triangle. */
   .campaign__media {
     position: absolute;
-    top: 0;
+    top: -12px;
     right: 0;
     bottom: 0;
-    width: 46%;
-    height: 100%;
-    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+    width: min(614px, 52%);
+    height: auto;
+    clip-path: polygon(15% 44%, 100% 0, 100% 100%, 0 100%);
   }
 }
 
