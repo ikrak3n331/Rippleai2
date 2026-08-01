@@ -12,7 +12,13 @@ is hovered.
 | --- | --- |
 | Files | `src/devtips.js`, `src/devtips.css` |
 | Wired in | one `initDevTips()` call in `src/main.js`, one `@import` in `src/styles.css` |
-| Disable | press <kbd>D</kbd> — the choice is stored in `localStorage` under `ripple-devtips` |
+| Toggle | press <kbd>D</kbd> — the choice is stored in `localStorage` under `ripple-devtips` |
+
+<kbd>D</kbd> toggles both ways and works immediately, with no reload. The listener is
+registered unconditionally, *before* the enabled check — an earlier version returned early
+when tips were off, which took the toggle with it and left no way back short of clearing
+`localStorage`. The keystroke is ignored while a form field has focus and when any modifier
+is held, so typing the letter "d" never trips it.
 
 ## How components are matched
 

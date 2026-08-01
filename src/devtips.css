@@ -17,11 +17,13 @@
   pointer-events: none;
 
   padding: 14px 16px;
-  border: 1px solid #2c4a6b;
+  border: 1px solid #2c4a6b99;
   border-radius: 10px;
-  background: #0f1a2cf2;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 28px #00000059;
+  /* See-through enough to read the component underneath, with the blur keeping
+     the text legible over busy backgrounds like the hero photograph. */
+  background: rgba(15, 26, 44, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 28px #00000047;
 
   color: #cfe4ff;
   font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -116,6 +118,32 @@
   }
 }
 
+/* Toggle confirmation. With tips off there is nothing else on screen to say the
+   shortcut exists, so this is the only affordance pointing back to it. */
+.devtip-toast {
+  position: fixed;
+  z-index: 201;
+  top: 100px;
+  right: 24px;
+  padding: 8px 14px;
+  border: 1px solid #2c4a6b99;
+  border-radius: 8px;
+  background: rgba(15, 26, 44, 0.82);
+  backdrop-filter: blur(10px);
+  color: #cfe4ff;
+  font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+.devtip-toast.is-open { opacity: 1; transform: none; }
+
+@media (max-width: 991px) {
+  .devtip-toast { top: auto; bottom: 12px; right: 12px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .devtip { transition: none; }
+  .devtip,
+  .devtip-toast { transition: none; }
 }

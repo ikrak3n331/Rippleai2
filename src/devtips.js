@@ -408,7 +408,10 @@ const TIPS = [
 const STORAGE_KEY = 'ripple-devtips';
 
 export function initDevTips() {
-  if (localStorage.getItem(STORAGE_KEY) === 'off') return;
+  /* Everything below is always wired up, and the enabled flag gates the display.
+     Returning early when tips are off would take the toggle listener with it,
+     leaving no way to switch them back on short of clearing localStorage. */
+  let enabled = localStorage.getItem(STORAGE_KEY) !== 'off';
 
   const panel = document.createElement('aside');
   panel.className = 'devtip';
@@ -468,6 +471,7 @@ export function initDevTips() {
   };
 
   addEventListener('pointermove', (e) => {
+    if (!enabled) return;
     const t = e.target;
     if (!(t instanceof Element) || panel.contains(t)) return;
     const hit = findTip(t);
@@ -476,6 +480,7 @@ export function initDevTips() {
 
   // Keyboard users get the same information on focus.
   addEventListener('focusin', (e) => {
+    if (!enabled) return;
     const hit = e.target instanceof Element && findTip(e.target);
     if (hit) show(hit.tip, hit.el);
   });
@@ -483,11 +488,31 @@ export function initDevTips() {
   addEventListener('pointerleave', hide);
   addEventListener('blur', hide);
 
-  addEventListener('keydown', (e) => {
-    if (e.key === 'd' || e.key === 'D') {
-      const off = localStorage.getItem(STORAGE_KEY) === 'off';
-      localStorage.setItem(STORAGE_KEY, off ? 'on' : 'off');
-      location.reload();
+  /* Brief confirmation, since with tips off there is otherwise nothing on screen
+     to say the shortcut exists or that it worked. */
+  const toast = (msg) => {
+    let el = document.querySelector('.devtip-toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'devtip-toast';
+      document.body.appendChild(el);
     }
+    el.textContent = msg;
+    el.classList.add('is-open');
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => el.classList.remove('is-open'), 1800);
+  };
+
+  addEventListener('keydown', (e) => {
+    if (e.key !== 'd' && e.key !== 'D') return;
+    // Never steal the keystroke from a form field or a shortcut.
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t instanceof Element && t.closest('input, textarea, select, [contenteditable]')) return;
+
+    enabled = !enabled;
+    localStorage.setItem(STORAGE_KEY, enabled ? 'on' : 'off');
+    if (!enabled) hide();
+    toast(enabled ? 'Developer tips on' : 'Developer tips off — press D to restore');
   });
 }
