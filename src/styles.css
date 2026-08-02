@@ -549,6 +549,14 @@ body {
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }
+/* Section titles are links on vic.gov.au and carry the same underline as the
+   items beneath them. The weight stays at 600 — Ripple 2.0 sets these in
+   SemiBold where the current site uses Bold. */
+.footer__section-title a {
+  color: inherit;
+  text-decoration: underline;
+}
+.footer__section-title a:hover { text-decoration: none; }
 
 .footer__links { margin: 0; padding: 0; list-style: none; }
 .footer__links li { display: flex; align-items: center; min-height: 32px; }
