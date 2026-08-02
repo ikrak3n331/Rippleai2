@@ -562,13 +562,21 @@ body {
 .footer__links a:hover,
 .footer__required-links a:hover { text-decoration: none; }
 
+/* Matches the vic.gov.au acknowledgement: flags beside the message when there
+   is room, flags on their own line with the message beneath below 768px. */
 .footer__acknowledgement-inner {
   max-width: var(--content-inner);
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 16px;
+  column-gap: 16px;
+  row-gap: 12px;
   padding: 24px 0;
+}
+
+@media (min-width: 768px) {
+  .footer__acknowledgement-inner { flex-wrap: nowrap; }
 }
 .footer__flags { display: flex; gap: 8px; flex: 0 0 auto; padding: 4px 0; }
 .footer__flag { display: block; width: 57px; height: 40px; }
