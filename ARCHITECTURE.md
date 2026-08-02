@@ -24,17 +24,21 @@ pages/                    # The eight pages (built from Figma)
 ├── form.html             # Form Page — text, select, textarea, checkbox
 ├── review.html           # Form Completion — review & submit
 ├── dashboard.html        # (WIP) Dashboard — tabs + empty state
-└── components.html       # Component gallery — live reference
+├── components.html       # Component gallery — live reference
+├── compare.html          # vic.gov.au today vs Ripple 2.0 Extended
+└── password.html         # Password gate — Log in page styling, one field
 
 partials/                 # Shared markup (injected at build time)
 ├── banner.html           # Salesforce banner with menu
 ├── footer.html           # Footer with nav, acknowledgement, core
+├── gate.html             # Blocking password check, in every page's <head>
 └── sprite.html           # SVG icon sprite (9 symbols)
 
 src/
 ├── styles.css            # Page-level styles, tokens, layout
 ├── components.css        # Shared component styles (hero, cards, forms, tabs, login, etc.)
 ├── main.js               # Vanilla JS: accordion, tabs, banner menu, word count
+├── password.js           # Checks the password, sets the session flag
 ├── fonts/                # VIC typeface WOFF2 files (4 weights)
 └── img/                  # Placeholder imagery (ripple-hero.webp, card-media.webp)
 
@@ -56,6 +60,24 @@ This means:
 - **One footer**, used in all 9 pages — edit `partials/footer.html` once
 - **One sprite**, used in all 9 pages — edit `partials/sprite.html` once
 - No duplication, no sync issues
+
+## The Password Gate
+
+`partials/gate.html` is included in the `<head>` of every page except
+`pages/password.html`. It is a plain blocking `<script>` rather than a module,
+so a locked page never paints before the redirect fires. It looks for the
+`ripple-unlocked` session flag and, without it, sends the visitor to
+`pages/password.html?next=<the path they asked for>`.
+
+`src/password.js` holds the password, sets the flag on a match and returns the
+visitor to `next` — same-origin paths only, so the parameter cannot be turned
+into an open redirect. The flag lives in `sessionStorage`, so closing the tab
+locks the site again.
+
+This is a curtain, not a lock: the site is static, the password ships in the
+bundle, and anyone who opens devtools can read it. It keeps the examples out of
+casual view and nothing more. Real protection has to come from the host (HTTP
+basic auth, an access-controlled deploy).
 
 ## CSS Architecture
 

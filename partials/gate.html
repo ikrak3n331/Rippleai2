@@ -1,0 +1,20 @@
+<!-- Password gate. Included in the <head> of every page except the password
+     page itself, and deliberately blocking so a locked page never paints
+     before the redirect happens.
+
+     This is a front-of-house lock on a static site, not security: the password
+     lives in the bundle and anyone who opens devtools can read it. It keeps the
+     examples out of casual view, nothing more. -->
+<script>
+  (function () {
+    try {
+      if (sessionStorage.getItem('ripple-unlocked') === '1') return;
+    } catch (e) {
+      /* Storage blocked — let the page through rather than trapping the
+         visitor in a redirect loop they cannot get out of. */
+      return;
+    }
+    var next = location.pathname + location.search + location.hash;
+    location.replace('/pages/password.html?next=' + encodeURIComponent(next));
+  })();
+</script>

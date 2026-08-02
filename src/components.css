@@ -587,6 +587,16 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
 
 .login__submit { width: 100%; }
 
+/* Password page: the one error the card can show. It sits in the Content
+   Area's 20px stack, so it needs no margin of its own. */
+.login__error {
+  margin: 0;
+  font: 700 16px/24px var(--rpl-font);
+  letter-spacing: 0.0192em;
+  color: var(--rpl-error);
+}
+.input[aria-invalid="true"] { border-color: var(--rpl-error); }
+
 .login__forgot,
 .login__register {
   margin: 0;
