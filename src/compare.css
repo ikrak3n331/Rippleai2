@@ -374,6 +374,13 @@ a { color: var(--link); }
    inset — not in the centred content column the heading below it uses. */
 .c-breadcrumbs { padding: 4px 16px 0; }
 
+/* The Ripple banner is 76px tall against the vic.gov.au bar's 92px, and that
+   16px was lifting everything in the hero — breadcrumbs, title and summary —
+   above where it sits on the current site. Rather than stretch the banner off
+   its design-system height, the difference goes back here as space beneath
+   it, so the whole hero lands at the same place in both themes. */
+:root[data-theme="ripple"] .c-breadcrumbs { padding-top: 20px; }
+
 .c-breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
