@@ -57,7 +57,10 @@
   --chip: #0052c2;
 
   --footer-bg: #003174;
+  --footer-fg: #ffffff;
   --footer-rule: #0052c2;
+  --footer-flag-border: #ffffff;
+  --footer-logo: #ffffff;
 
   /* Rounded square. Theme B takes this to a full lozenge. */
   --button-radius: 4px;
@@ -94,8 +97,13 @@
   --action-fg: #ffffff;
   --chip: #004c97;
 
-  --footer-bg: #201547;
-  --footer-rule: #3d2f6b;
+  /* The Ripple footer is the pale Accent Alt band, not the aqua Accent — so the
+     links, acknowledgement, flag hairline and VIC mark all invert to dark. */
+  --footer-bg: #e7f8f9;           /* Ripple 2.0/Accent/Accent Alt */
+  --footer-fg: #1a1a1a;           /* Ripple 2.0/Type/Default */
+  --footer-rule: #0052c2;
+  --footer-flag-border: #cccccc;
+  --footer-logo: #201547;         /* Ripple 2.0/Primary/Primary */
 
   --button-radius: 999px;         /* lozenge rather than rounded square */
   --w-bold: 600;                  /* VIC SemiBold instead of VIC Bold */
@@ -755,11 +763,11 @@ a.c-inset:hover .c-inset__title { color: var(--link); }
 
 .c-footer {
   background: var(--footer-bg);
-  color: #ffffff;
+  color: var(--footer-fg);
   padding: 22px 0 32px;
 }
 
-.c-footer a { color: #ffffff; text-decoration: underline; }
+.c-footer a { color: var(--footer-fg); text-decoration: underline; }
 .c-footer a:hover { text-decoration: none; }
 
 .c-footer__columns {
@@ -807,11 +815,11 @@ a.c-inset:hover .c-inset__title { color: var(--link); }
 
 .c-footer__flags { display: flex; gap: 8px; flex: 0 0 auto; }
 
-/* The hairline is what separates the flags from the dark footer behind them. */
+/* The hairline is what separates the flags from the footer behind them. */
 .c-footer__flags svg {
   width: 55px;
   height: 40px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--footer-flag-border);
 }
 
 .c-footer__ack-text {
@@ -843,5 +851,5 @@ a.c-inset:hover .c-inset__title { color: var(--link); }
 
 .c-footer__copyright { margin: 0; font-size: 14px; line-height: 20px; }
 
-.c-footer__logo { width: 74px; height: 42px; fill: #ffffff; }
+.c-footer__logo { width: 74px; height: 42px; fill: var(--footer-logo); }
 
