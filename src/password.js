@@ -29,7 +29,7 @@ form?.addEventListener('submit', event => {
   }
 
   try {
-    sessionStorage.setItem(KEY, '1');
+    localStorage.setItem(KEY, '1');
   } catch (e) {
     /* Nothing to do: without storage the gate lets pages through anyway. */
   }

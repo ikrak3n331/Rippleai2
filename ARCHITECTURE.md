@@ -71,8 +71,10 @@ so a locked page never paints before the redirect fires. It looks for the
 
 `src/password.js` holds the password, sets the flag on a match and returns the
 visitor to `next` — same-origin paths only, so the parameter cannot be turned
-into an open redirect. The flag lives in `sessionStorage`, so closing the tab
-locks the site again.
+into an open redirect. The flag lives in `localStorage`, so the password is
+asked for once per browser: a link opened in a new tab does not reliably
+inherit session storage, and the index links open in new tabs. Clearing site
+data locks it again.
 
 This is a curtain, not a lock: the site is static, the password ships in the
 bundle, and anyone who opens devtools can read it. It keeps the examples out of
