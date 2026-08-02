@@ -4,15 +4,16 @@
    The page is built once. Two themes render it: `current` reproduces the live
    site as it stands today, `ripple` re-skins it in Ripple 2.0 Extended.
 
-   Only three things differ between the themes, which is the whole point of the
+   Only four things differ between the themes, which is the whole point of the
    comparison:
 
      1. the colour scheme          — the token block below
      2. the top navigation         — .c-nav--current vs .c-nav--ripple
      3. bold weight becomes semi   — --w-bold flips 700 -> 600
+     4. button shape               — --button-radius 4px -> full lozenge
 
    Every other rule in this file is shared, so anything that moves between the
-   two screenshots is one of those three things and nothing else.
+   two screenshots is one of those four things and nothing else.
    ========================================================================== */
 
 @font-face {
@@ -58,6 +59,9 @@
   --footer-bg: #003174;
   --footer-rule: #0052c2;
 
+  /* Rounded square. Theme B takes this to a full lozenge. */
+  --button-radius: 4px;
+
   /* Bold everywhere the design calls for it. Theme B drops this to 600. */
   --w-bold: 700;
 
@@ -93,6 +97,7 @@
   --footer-bg: #201547;
   --footer-rule: #3d2f6b;
 
+  --button-radius: 999px;         /* lozenge rather than rounded square */
   --w-bold: 600;                  /* VIC SemiBold instead of VIC Bold */
 }
 
@@ -557,7 +562,7 @@ a { color: var(--link); }
   justify-content: center;
   padding: 14px 18px;
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--button-radius);
   background: var(--action-bg);
   color: var(--action-fg);
   font: var(--w-bold) 16px/20px var(--font);
