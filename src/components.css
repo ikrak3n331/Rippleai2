@@ -51,6 +51,12 @@
   .hero { padding: 212px 80px 80px; }
   .hero__title span { font-size: 56px; line-height: 80px; }
   .hero__intro span { font-size: 24px; line-height: 32px; }
+
+  /* The homepage title runs to two lines where every other hero has one. At
+     80px a line plus the 8px gap that made this band 88px taller than the 424px
+     the design specifies, dropping its copy well below where it sits on every
+     other page. The top padding absorbs the extra line so the heights match. */
+  .hero--home { padding-top: 124px; }
 }
 
 /* ---------- Introduction banner ---------- */
