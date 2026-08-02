@@ -100,24 +100,41 @@
   letter-spacing: 0.018em;
   color: var(--rpl-type-default);
 }
+/* Underlined at rest, as the vic.gov.au related links are, and as the footer
+   links in this build already were. The underline is on the label span rather
+   than the anchor so it stops at the last word instead of running under the
+   space that separates the text from the arrow. */
 .journey a {
   font: 400 20px/28px var(--rpl-font);
   letter-spacing: 0.018em;
   color: var(--rpl-type-default);
   text-decoration: none;
 }
-.journey a:hover { text-decoration: underline; }
+.journey__text { text-decoration: underline; }
+.journey a:hover .journey__text { text-decoration: none; }
 /* The arrow belongs to the last word, not to the right-hand edge of the
    column -- vic.gov.au keeps it in the text flow, so a link that wraps still
-   carries it on the closing line. The gap is the &nbsp; in the markup, which
-   is also what stops a line break falling between the text and the arrow.
-   Inline-block rather than inline so the hover underline stops at the text. */
+   carries it on the closing line.
+
+   A line break is allowed on either side of an inline-block whatever sits
+   next to it, a no-break space included, so the last word and the arrow are
+   wrapped in .nb together. Without it a link whose text just fills the column
+   leaves the arrow stranded underneath.
+
+   The sprite paints its shape with fill="currentColor" on a <g>, and a
+   presentation attribute there outranks a fill set on the outer <svg> -- so
+   the colour has to come through `color`, or the arrow renders in the link's
+   near-black text colour. */
+.nb { white-space: nowrap; }
+
 .journey a svg {
   display: inline-block;
   width: 16px;
   height: 16px;
+  margin-left: 8px;
   vertical-align: middle;
-  fill: var(--rpl-type-link);
+  color: var(--rpl-type-link);
+  fill: currentColor;
 }
 
 @media (min-width: 992px) {

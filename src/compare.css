@@ -507,16 +507,26 @@ a { color: var(--link); }
 
 /* The arrow sits with the last word rather than out at the column edge, so a
    link that runs to two lines carries it on the closing line, as it does on
-   the live page. The gap is the &nbsp; in the markup: a line break is allowed
-   on either side of an inline-block, and without the no-break space a link
-   whose text just fits leaves the arrow stranded on a line of its own.
-   Inline-block also keeps the underline off the arrow. */
+   the live page. .c-nb holds the last word and the arrow together: a line
+   break is allowed either side of an inline-block, so without it a link whose
+   text just fills the column leaves the arrow stranded underneath.
+
+   Inline-block also keeps the underline off the arrow, and the margin is
+   outside the decoration, so the rule stops at the last letter.
+
+   Colour comes through `color` rather than `fill`: the sprite paints with
+   fill="currentColor" on an inner <g>, and that presentation attribute
+   outranks a fill set out here on the <svg>. */
+.c-nb { white-space: nowrap; }
+
 .c-intro__links svg {
   display: inline-block;
   width: 16px;
   height: 16px;
+  margin-left: 8px;
   vertical-align: middle;
-  fill: var(--link);
+  color: var(--link);
+  fill: currentColor;
 }
 
 /* ==========================================================================

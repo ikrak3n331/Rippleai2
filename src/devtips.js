@@ -76,7 +76,7 @@ const TIPS = [
     role: 'Secondary navigation beside the introduction copy.',
     type: [
       ['Heading', 'VIC SemiBold 20/28 · 0.018em · Type/Default'],
-      ['Link', 'VIC Regular 20/28 · 0.018em · Type/Default, underline on hover'],
+      ['Link', 'VIC Regular 20/28 · 0.018em · Type/Default, underlined, clears on hover'],
     ],
     box: [['Arrow', '16px, fill Type/Link #004c97'], ['Gap', '16px between rows']],
     responsive: [['≥992', 'Fixed 328px column beside the copy'], ['<992', 'Stacks below the copy']],
