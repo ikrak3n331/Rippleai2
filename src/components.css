@@ -240,6 +240,11 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   border: 1px solid var(--rpl-neutral-600);
   cursor: pointer;
 }
+/* The copy and its required marker are one flex item. Left loose they are two,
+   and the asterisk lands out beside the wrapped block rather than at the end
+   of the sentence. The &nbsp; before the marker keeps it on the closing line. */
+.choice__text { min-width: 0; }
+
 .choice input[type="radio"] { border-radius: 50%; }
 .choice input[type="checkbox"] { border-radius: 2px; }
 .choice input:checked::after {
