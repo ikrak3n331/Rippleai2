@@ -550,12 +550,43 @@
     var sw = document.querySelector('[data-theme-toggle]');
     sw.setAttribute('aria-checked', isRipple ? 'true' : 'false');
 
+    var SCROLL_KEY = 'compare-scroll';
+
+    /* Switching themes is a real page load, so the scroll position has to be
+       carried across by hand — otherwise every switch throws you back to the
+       top and you lose the part of the page you were comparing. */
+    var saved = null;
+    try {
+      saved = sessionStorage.getItem(SCROLL_KEY);
+      sessionStorage.removeItem(SCROLL_KEY);
+    } catch (e) {}
+
+    var y = saved === null ? NaN : parseInt(saved, 10);
+    var restoring = !isNaN(y);
+
+    /* Take manual control only while we are restoring, and hand it straight
+       back otherwise. The setting rides along with the tab, so leaving it on
+       "manual" would quietly break the browser's own Back-button restore on
+       every later navigation. */
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = restoring ? 'manual' : 'auto';
+    }
+
+    if (restoring) {
+      window.scrollTo(0, y);
+      /* Images settle after parse and can change the document height, so put
+         it back once everything has loaded. */
+      window.addEventListener('load', function () { window.scrollTo(0, y); });
+    }
+
     sw.addEventListener('click', function () {
-      /* Record the intent for this tab so the head script honours the
-         parameter it is about to be handed. */
       try {
+        /* Record the intent for this tab so the head script honours the
+           parameter it is about to be handed. */
         if (isRipple) sessionStorage.removeItem('compare-toggled');
         else sessionStorage.setItem('compare-toggled', '1');
+
+        sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
       } catch (e) {}
 
       location.assign(location.pathname + (isRipple ? '' : '?theme=ripple'));
