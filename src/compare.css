@@ -1,0 +1,818 @@
+/* ==========================================================================
+   Compare page — vic.gov.au/department-education, recreated
+
+   The page is built once. Two themes render it: `current` reproduces the live
+   site as it stands today, `ripple` re-skins it in Ripple 2.0 Extended.
+
+   Only three things differ between the themes, which is the whole point of the
+   comparison:
+
+     1. the colour scheme          — the token block below
+     2. the top navigation         — .c-nav--current vs .c-nav--ripple
+     3. bold weight becomes semi   — --w-bold flips 700 -> 600
+
+   Every other rule in this file is shared, so anything that moves between the
+   two screenshots is one of those three things and nothing else.
+   ========================================================================== */
+
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "VIC";
+  src: url("./fonts/VIC-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   Theme A — current vic.gov.au. Colours read off the live page with
+   getComputedStyle rather than picked out of a screenshot.
+   -------------------------------------------------------------------------- */
+:root {
+  --nav-bg: #0052c2;
+  --nav-fg: #ffffff;
+
+  --hero-title-bg: #0095ec;
+  --hero-title-fg: #ffffff;
+  --hero-summary-bg: #e6f5fd;
+  --hero-summary-fg: #1a1a1a;
+
+  --link: #0052c2;
+  --heading: #1a1a1a;
+  --action-bg: #0052c2;
+  --action-fg: #ffffff;
+  --chip: #0052c2;
+
+  --footer-bg: #003174;
+  --footer-rule: #0052c2;
+
+  /* Bold everywhere the design calls for it. Theme B drops this to 600. */
+  --w-bold: 700;
+
+  /* Shared, theme-independent */
+  --ink: #1a1a1a;
+  --muted: #666666;
+  --body-bg: #f5f5f5;
+  --surface: #ffffff;
+  --border: #cccccc;
+  --font: "VIC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --content: 1040px;
+}
+
+/* --------------------------------------------------------------------------
+   Theme B — Ripple 2.0 Extended. Values are the tokens already documented in
+   DESIGN-TOKENS.md, so the re-skin uses the design system's own palette.
+   -------------------------------------------------------------------------- */
+:root[data-theme="ripple"] {
+  --nav-bg: #201547;              /* Ripple 2.0/Primary/Primary */
+  --nav-fg: #ffffff;
+
+  --hero-title-bg: #88dbdf;       /* Ripple 2.0/Accent/Accent */
+  --hero-title-fg: #201547;
+  --hero-summary-bg: #e7f8f9;     /* Ripple 2.0/Accent/Accent Alt */
+  --hero-summary-fg: #1a1a1a;
+
+  --link: #004c97;                /* Ripple 2.0/Type/Link/Link */
+  --heading: #201547;
+  --action-bg: #201547;
+  --action-fg: #ffffff;
+  --chip: #004c97;
+
+  --footer-bg: #201547;
+  --footer-rule: #3d2f6b;
+
+  --w-bold: 600;                  /* VIC SemiBold instead of VIC Bold */
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 16px/24px var(--font);
+  letter-spacing: 0.0192em;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--link); }
+
+/* The injected icon sprite is a real <svg> in the document, so without this it
+   takes up an SVG's default 300x150 box at the top of the page. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.c-container {
+  width: 100%;
+  max-width: calc(var(--content) + 32px);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.c-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  color: var(--link);
+  padding: 12px 16px;
+  font-weight: var(--w-bold);
+}
+.c-skip-link:focus { left: 8px; top: 8px; }
+
+/* ==========================================================================
+   Theme toggle
+
+   Sits above the page rather than inside it so it never reads as part of
+   either design. Activating it reloads the page on the other theme.
+   ========================================================================== */
+
+/* Sticks to the top so the comparison stays one click away at any scroll
+   position. Kept to a single compact row for that reason. */
+.c-toggle-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 10px 16px;
+}
+
+.c-toggle-bar__inner {
+  max-width: calc(var(--content) + 32px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+/* The two designs are named either side of the switch, so the control reads as
+   a position between them rather than an on/off. */
+.c-switch-group { display: inline-flex; align-items: center; gap: 12px; }
+
+.c-switch-side {
+  font-size: 14px;
+  line-height: 20px;
+  color: #9a9a9a;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+:root[data-theme="current"] .c-switch-side[data-side="current"],
+:root[data-theme="ripple"] .c-switch-side[data-side="ripple"] {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.c-switch {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 17px;
+  background: #5a5a5a;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+:root[data-theme="ripple"] .c-switch { background: #88dbdf; }
+.c-switch:focus-visible { outline: 3px solid #88dbdf; outline-offset: 3px; }
+
+.c-switch__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transition: transform 180ms ease;
+}
+:root[data-theme="ripple"] .c-switch__knob { transform: translateX(30px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .c-switch, .c-switch__knob, .c-switch-side { transition: none; }
+}
+
+.c-toggle-note {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #c9c9c9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c-toggle-bar__home {
+  margin-left: auto;
+  color: #ffffff;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Below the wide breakpoint the note is the first thing to go, keeping the bar
+   to one row so it costs little vertical space while pinned. */
+@media (max-width: 1099px) {
+  .c-toggle-note { display: none; }
+}
+
+/* ==========================================================================
+   Top navigation — theme A
+
+   Inset rounded bar, floating over the hero image.
+   ========================================================================== */
+
+.c-nav--ripple { display: none; }
+:root[data-theme="ripple"] .c-nav--current { display: none; }
+:root[data-theme="ripple"] .c-nav--ripple { display: block; }
+
+.c-nav--current { padding: 16px; }
+
+.c-nav--current .c-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  border-radius: 4px;
+  background: var(--nav-bg);
+  color: var(--nav-fg);
+}
+
+.c-nav__wordmark {
+  color: var(--nav-fg);
+  font: var(--w-bold) 18px/1 var(--font);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.c-nav__actions { display: flex; align-items: center; gap: 4px; }
+
+.c-nav__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 60px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  color: var(--nav-fg);
+  font: var(--w-bold) 14px/14px var(--font);
+  letter-spacing: 0.0168em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.c-nav__action:hover span { text-decoration: underline; }
+
+.c-nav__icon { width: 16px; height: 16px; fill: currentColor; flex: none; }
+.c-nav__icon--sm { width: 12px; height: 12px; }
+
+/* ==========================================================================
+   Top navigation — theme B
+
+   The Ripple 2.0 Extended banner: full-bleed primary bar, Victoria State
+   Government logo, a rule, then the system name. Matches partials/banner.html.
+   ========================================================================== */
+
+.c-nav--ripple .c-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 76px;
+  padding: 8px 16px;
+  background: var(--nav-bg);
+  color: var(--nav-fg);
+}
+
+.c-nav__branding { display: flex; align-items: center; gap: 22px; }
+
+.c-nav__logo { display: block; line-height: 0; }
+.c-nav__logo svg {
+  display: block;
+  width: 74px;
+  height: 42px;
+  color: #ffffff;
+  fill: currentColor;
+}
+
+.c-nav__rule {
+  display: none;
+  width: 2px;
+  height: 30px;
+  background: #ffffff;
+}
+
+.c-nav__system {
+  display: none;
+  color: var(--nav-fg);
+  font: 500 18px/1.2 var(--font);
+  text-decoration: none;
+}
+.c-nav__system:hover { text-decoration: underline; }
+
+@media (min-width: 768px) {
+  .c-nav__rule { display: block; }
+  .c-nav__system { display: block; }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.c-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 481px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.c-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Everything above the photograph. */
+.c-hero > *:not(.c-hero__bg) { position: relative; z-index: 1; }
+
+.c-breadcrumbs { padding: 4px 0 0; }
+
+.c-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c-breadcrumbs li + li::before {
+  content: "›";
+  margin-right: 8px;
+  color: var(--link);
+}
+
+.c-breadcrumbs a { color: var(--link); text-decoration: underline; }
+
+/* Breadcrumbs sit on a white plate that hugs the text, keeping them legible
+   over the photograph. */
+.c-breadcrumbs__plate {
+  display: inline-block;
+  background: var(--surface);
+  padding: 14px 16px;
+  border-radius: 2px;
+}
+
+.c-hero__body {
+  margin-top: auto;
+  padding: 40px 0 56px;
+  max-width: 840px;
+}
+
+.c-hero__title {
+  margin: 0;
+  font-size: 56px;
+  line-height: 88px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.008em;
+}
+
+/* box-decoration-break keeps the highlight tight to each wrapped line rather
+   than drawing one rectangle behind the whole block. */
+.c-hero__title span,
+.c-hero__summary span {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.c-hero__title span {
+  background: var(--hero-title-bg);
+  color: var(--hero-title-fg);
+  padding: 2px 16px;
+}
+
+.c-hero__summary {
+  margin: 8px 0 0;
+  font-size: 24px;
+  line-height: 32px;
+}
+.c-hero__summary span {
+  background: var(--hero-summary-bg);
+  color: var(--hero-summary-fg);
+  padding: 0 8px;
+}
+
+@media (max-width: 767px) {
+  .c-hero { min-height: 360px; }
+  .c-hero__title { font-size: 36px; line-height: 56px; }
+  .c-hero__summary { font-size: 18px; line-height: 26px; }
+}
+
+/* ==========================================================================
+   Intro banner — "Who we are"
+   ========================================================================== */
+
+.c-intro {
+  background: var(--surface);
+  padding: 48px 0 56px;
+}
+
+.c-intro__inner { display: grid; gap: 32px; }
+
+@media (min-width: 992px) {
+  .c-intro__inner {
+    grid-template-columns: 7fr 4fr;
+    gap: 32px 64px;
+  }
+}
+
+.c-intro__title {
+  margin: 0 0 16px;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.014em;
+  color: var(--heading);
+}
+
+.c-intro__content p { margin: 0 0 16px; }
+.c-intro__content p:last-child { margin-bottom: 0; }
+
+.c-intro__links { margin: 0; padding: 0; list-style: none; }
+
+.c-intro__links li + li { margin-top: 16px; }
+
+.c-intro__links a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--ink);
+  text-decoration: underline;
+}
+.c-intro__links a:hover { color: var(--link); }
+
+.c-intro__links svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--link);
+  flex: none;
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   Campaign banner
+
+   Geometry taken from the live rpl-campaign-banner, same as the repo's
+   existing .campaign component: copy held to the left half, photograph
+   bleeding right with a diagonal left edge.
+   ========================================================================== */
+
+.c-campaign {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.c-campaign__media {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.c-campaign__content { padding: 32px 0 24px; }
+
+.c-campaign__title {
+  margin: 0 0 16px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.014em;
+  color: var(--heading);
+}
+
+.c-campaign__text { margin: 0 0 28px; font-size: 18px; line-height: 26px; }
+
+@media (min-width: 992px) {
+  .c-campaign { min-height: 284px; }
+  .c-campaign__content { max-width: 50%; padding: 56px 0; }
+  .c-campaign__title { font-size: 32px; line-height: 40px; }
+  .c-campaign__text { font-size: 20px; line-height: 28px; }
+
+  .c-campaign__media {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    bottom: 0;
+    width: min(614px, 52%);
+    height: auto;
+    clip-path: polygon(15% 44%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--action-bg);
+  color: var(--action-fg);
+  font: var(--w-bold) 16px/20px var(--font);
+  letter-spacing: 0.0192em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.c-button:hover { filter: brightness(1.15); }
+
+/* ==========================================================================
+   Body — the grey run of page components
+   ========================================================================== */
+
+.c-body { background: var(--body-bg); padding: 80px 0; }
+
+.c-section + .c-section { margin-top: 40px; }
+
+.c-section__title {
+  margin: 0 0 24px;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.014em;
+  color: var(--heading);
+}
+
+/* ---------- Promo card grid ---------- */
+
+.c-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 991px) { .c-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .c-cards { grid-template-columns: 1fr; } }
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+}
+.c-card:hover .c-card__title { color: var(--link); }
+
+.c-card__media {
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+}
+
+.c-card__body { padding: 20px; }
+
+.c-card__title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.018em;
+  color: var(--ink);
+}
+
+.c-card__text { margin: 0; font-size: 16px; line-height: 24px; }
+
+/* ---------- Inset card — nav card and call to action ---------- */
+
+.c-inset {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .c-inset { grid-template-columns: 296px 1fr; gap: 32px; }
+}
+
+.c-inset__media {
+  width: 100%;
+  height: 100%;
+  min-height: 176px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.c-inset__title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.016em;
+  color: var(--ink);
+}
+a.c-inset:hover .c-inset__title { color: var(--link); }
+
+.c-inset__text { margin: 0; }
+
+.c-inset__action { margin-top: 20px; }
+
+/* ---------- Category grid ---------- */
+
+.c-catgrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 991px) { .c-catgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .c-catgrid { grid-template-columns: 1fr; } }
+
+.c-catgrid__title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.018em;
+}
+.c-catgrid__title a { color: var(--ink); text-decoration: underline; }
+.c-catgrid__title a:hover { color: var(--link); }
+
+.c-catgrid p { margin: 0; }
+
+/* ---------- Chip and updated date ---------- */
+
+.c-tags { margin-top: 40px; }
+
+.c-chip {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 2px solid var(--chip);
+  border-radius: 20px;
+  color: var(--chip);
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration: none;
+}
+.c-chip:hover { background: var(--chip); color: #ffffff; }
+
+.c-updated {
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ==========================================================================
+   Was this page helpful
+   ========================================================================== */
+
+.c-rating { background: var(--surface); padding: 40px 0; }
+
+.c-rating fieldset { margin: 0; padding: 0; border: 0; }
+
+.c-rating legend {
+  padding: 0;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: var(--w-bold);
+  color: var(--heading);
+}
+
+.c-rating__options { display: flex; gap: 32px; margin-top: 16px; }
+
+.c-rating__option { display: inline-flex; align-items: center; gap: 8px; }
+.c-rating__option input { width: 20px; height: 20px; accent-color: var(--link); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.c-footer {
+  background: var(--footer-bg);
+  color: #ffffff;
+  padding: 22px 0 32px;
+}
+
+.c-footer a { color: #ffffff; text-decoration: underline; }
+.c-footer a:hover { text-decoration: none; }
+
+.c-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 24px 0 40px;
+}
+
+@media (max-width: 991px) { .c-footer__columns { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .c-footer__columns { grid-template-columns: 1fr; } }
+
+.c-footer__group + .c-footer__group { margin-top: 28px; }
+
+.c-footer__group-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: var(--w-bold);
+  text-decoration: underline;
+}
+
+.c-footer__links { margin: 0; padding: 0; list-style: none; }
+.c-footer__links li + li { margin-top: 8px; }
+.c-footer__links a { font-size: 14px; line-height: 20px; }
+
+.c-footer__ack {
+  border-top: 1px solid var(--footer-rule);
+  padding: 24px 0;
+}
+
+.c-footer__ack-inner { display: flex; align-items: center; gap: 20px; }
+
+.c-footer__flags { display: flex; gap: 8px; flex: none; }
+.c-footer__flags svg { width: 55px; height: 38px; }
+
+.c-footer__ack-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--w-bold);
+}
+
+.c-footer__core {
+  border-top: 1px solid var(--footer-rule);
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.c-footer__required {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.c-footer__required a { font-size: 14px; line-height: 20px; }
+
+.c-footer__copyright { margin: 0; font-size: 14px; line-height: 20px; }
+
+.c-footer__logo { width: 74px; height: 42px; fill: #ffffff; }
+
+@media (max-width: 575px) {
+  .c-footer__ack-inner { flex-direction: column; align-items: flex-start; }
+}

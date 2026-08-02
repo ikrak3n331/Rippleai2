@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare — Department of Education | vic.gov.au</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/src/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/compare.css">
+  <script>
+    /* Resolve the theme before first paint so the reload lands on the new look
+       with no flash of the old one.
+
+       Opening the page always starts on the current vic.gov.au look. The
+       ?theme=ripple parameter is only honoured once the toggle has actually
+       been pressed in this tab, so a stale link, a bookmark or a reopened tab
+       still lands on the default. Reloading after toggling keeps Ripple,
+       because the session flag survives a reload. */
+    (function () {
+      var requested = new URLSearchParams(location.search).get('theme');
+      var toggled = false;
+      try { toggled = sessionStorage.getItem('compare-toggled') === '1'; } catch (e) {}
+
+      var theme = (requested === 'ripple' && toggled) ? 'ripple' : 'current';
+      document.documentElement.setAttribute('data-theme', theme);
+
+      /* Drop a parameter we are not honouring so the URL never contradicts
+         what is on screen. */
+      if (requested === 'ripple' && theme === 'current') {
+        history.replaceState(null, '', location.pathname);
+      }
+    })();
+  </script>
+</head>
+<body>
+<!--#include partials/sprite.html -->
+
+<a class="c-skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ==========================================================================
+     Theme toggle. Deliberately outside the recreated page so it never reads as
+     part of either design.
+     ========================================================================== -->
+<div class="c-toggle-bar">
+  <div class="c-toggle-bar__inner">
+    <span class="c-switch-group">
+      <span class="c-switch-side" data-side="current">vic.gov.au today</span>
+      <button type="button" class="c-switch" role="switch" aria-checked="false"
+              aria-label="Switch between the current vic.gov.au design and Ripple 2.0 Extended"
+              data-theme-toggle>
+        <span class="c-switch__knob" aria-hidden="true"></span>
+      </button>
+      <span class="c-switch-side" data-side="ripple">Ripple 2.0 Extended</span>
+    </span>
+    <p class="c-toggle-note">Same page, reloaded — only colour, nav and
+      bold&nbsp;→&nbsp;semibold differ.</p>
+    <a class="c-toggle-bar__home" href="/">← All page examples</a>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     Hero. The photograph sits behind the navigation, as on the live page.
+     ========================================================================== -->
+<div class="c-hero">
+  <img class="c-hero__bg" src="/src/img/compare/hero.jpg" alt="">
+
+  <!-- Top navigation — current vic.gov.au -->
+  <header class="c-nav c-nav--current">
+    <div class="c-nav__inner">
+      <a class="c-nav__wordmark" href="https://www.vic.gov.au/">VIC.GOV.AU</a>
+      <nav class="c-nav__actions" aria-label="Primary navigation">
+        <button type="button" class="c-nav__action" aria-expanded="false">
+          <span>Menu</span>
+          <svg class="c-nav__icon c-nav__icon--sm" aria-hidden="true"><use href="#i-chevron-12"></use></svg>
+        </button>
+        <a class="c-nav__action" href="https://www.vic.gov.au/search">
+          <span>Search</span>
+          <svg class="c-nav__icon" aria-hidden="true"><use href="#i-search"></use></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Top navigation — Ripple 2.0 Extended -->
+  <header class="c-nav c-nav--ripple">
+    <div class="c-nav__inner">
+      <div class="c-nav__branding">
+        <a class="c-nav__logo" href="/" aria-label="Victoria State Government — home">
+          <svg role="img" aria-hidden="true"><use href="#i-vic-logo"></use></svg>
+        </a>
+        <span class="c-nav__rule" aria-hidden="true"></span>
+        <a class="c-nav__system" href="/">Ripple Extended Theme</a>
+      </div>
+      <nav class="c-nav__actions" aria-label="Primary navigation">
+        <button type="button" class="c-nav__action" aria-expanded="false">
+          <span>Menu</span>
+          <svg class="c-nav__icon c-nav__icon--sm" aria-hidden="true"><use href="#i-chevron-12"></use></svg>
+        </button>
+        <a class="c-nav__action" href="#">
+          <svg class="c-nav__icon" aria-hidden="true"><use href="#i-user-circle"></use></svg>
+          <span>Login</span>
+        </a>
+        <a class="c-nav__action" href="#">
+          <span>Search</span>
+          <svg class="c-nav__icon" aria-hidden="true"><use href="#i-search"></use></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="c-container">
+    <nav class="c-breadcrumbs" aria-label="breadcrumbs">
+      <span class="c-breadcrumbs__plate">
+        <ol>
+          <li><a href="https://www.vic.gov.au/find-connect-shape-your-victorian-government">Home</a></li>
+          <li><a href="https://www.vic.gov.au/victorian-government">Victorian Government</a></li>
+          <li><a href="https://www.vic.gov.au/find-a-vic-gov-department-agency-or-service">Find a Vic Gov department, agency or service</a></li>
+        </ol>
+      </span>
+    </nav>
+  </div>
+
+  <div class="c-container">
+    <div class="c-hero__body">
+      <h1 class="c-hero__title"><span>Department of Education</span></h1>
+      <p class="c-hero__summary"><span>The Department of Education offers learning and development support and services for all Victorians.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     Introduction banner
+     ========================================================================== -->
+<section class="c-intro">
+  <div class="c-container c-intro__inner">
+    <div>
+      <h2 class="c-intro__title">Who we are</h2>
+      <div class="c-intro__content">
+        <p>The Department of Education aims to provide every student in Victoria with equal access to
+          high-quality public education. Our vision is to enhance student experiences and wellbeing and
+          provide educators with the resources they need to guide young people.</p>
+        <p>We are committed to working with our staff and partners to deliver our vision for students
+          and educators across Victoria.</p>
+      </div>
+    </div>
+    <div>
+      <ul class="c-intro__links">
+        <li><a href="https://www.vic.gov.au/school-term-dates-and-holidays-victoria">Term dates and holidays<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></li>
+        <li><a href="https://www.vic.gov.au/early-childhood-school-closures">Early childhood and school closures<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></li>
+        <li><a href="https://www.schools.vic.gov.au/schools-vic">Information for schools<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></li>
+        <li><a href="https://www2.education.vic.gov.au/pal">Policy and Advisory Library (PAL)<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></li>
+        <li><a href="https://www.vic.gov.au/education">Education<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     Campaign banner
+     ========================================================================== -->
+<section class="c-campaign">
+  <div class="c-container">
+    <div class="c-campaign__content">
+      <h2 class="c-campaign__title">Discover education jobs available now</h2>
+      <p class="c-campaign__text">Find teaching roles in early childhood and schools, allied health and
+        support roles, and positions at the Department of Education.</p>
+      <a class="c-button" href="https://www.vic.gov.au/jobs-and-working-department-education">Apply now</a>
+    </div>
+  </div>
+  <img class="c-campaign__media" src="/src/img/compare/campaign.jpg" alt="">
+</section>
+
+<!-- ==========================================================================
+     Body
+     ========================================================================== -->
+<main id="main-content" class="c-body">
+  <div class="c-container">
+
+    <section class="c-section">
+      <h2 class="c-section__title">Information about the department</h2>
+      <div class="c-cards">
+        <a class="c-card" href="https://www.vic.gov.au/people-and-structure-department-education">
+          <div class="c-card__body">
+            <h3 class="c-card__title">People and structure</h3>
+            <p class="c-card__text">Our organisation structure, ministers, key staff, strategy, action plans, and vision.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/jobs-and-working-department-education">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Jobs and working at the Department of Education</h3>
+            <p class="c-card__text">Information about teaching careers, including how to get qualified, incentives, scholarships, pathways into teaching, and applying for jobs.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/governance-and-reporting-department-education">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Governance and reporting</h3>
+            <p class="c-card__text">Download our annual reports, action plans, travel reports, budget information, integrity registers and procurement activity plans.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="c-section">
+      <a class="c-inset" href="https://www.vic.gov.au/contact-department-education">
+        <img class="c-inset__media" src="/src/img/compare/contact.jpg"
+             alt="A male school teacher in a white shirt sits with two female students. They are all looking at an iPad and mid conversation.">
+        <div>
+          <h3 class="c-inset__title">Contact the Department of Education</h3>
+          <p class="c-inset__text">Contact details for our offices, regions, accessing school records,
+            freedom of information requests. Find out how to provide feedback or make a complaint.</p>
+        </div>
+      </a>
+    </section>
+
+    <section class="c-section">
+      <ul class="c-catgrid">
+        <li>
+          <h3 class="c-catgrid__title"><a href="https://www.vic.gov.au/structure-organisational-chart-department-education">Structure and organisational chart</a></h3>
+          <p>Our organisational structure, groups, advisory councils, regions, authorities and committees.</p>
+        </li>
+        <li>
+          <h3 class="c-catgrid__title"><a href="https://www.vic.gov.au/ministers-key-staff-department-education">Ministers and key staff</a></h3>
+          <p>Profile information about the ministers and key staff responsible for the Department of Education.</p>
+        </li>
+        <li>
+          <h3 class="c-catgrid__title"><a href="https://www.vic.gov.au/legislation-and-ministerial-orders-department-education">Legislation and ministerial orders</a></h3>
+          <p>The department supports its portfolio ministers to administer Acts of parliament and subordinate legislation they are responsible for.</p>
+        </li>
+        <li>
+          <h3 class="c-catgrid__title"><a href="https://www.vic.gov.au/department-education-annual-reports">Annual reports</a></h3>
+          <p>Our annual report details how we are delivering on our commitment to providing Victorians with the best learning and development experience.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="c-section">
+      <div class="c-inset">
+        <img class="c-inset__media" src="/src/img/compare/scholarship.jpg"
+             alt="A female teacher sits with a female high school student. They are smiling down at a computer screen in front of them.">
+        <div>
+          <h3 class="c-inset__title">New teaching scholarship and other workforce supports</h3>
+          <p class="c-inset__text">Find out what's happening in Victoria to better attract, retain, and
+            support teachers, including new scholarships and financial incentives.</p>
+          <p class="c-inset__action">
+            <a class="c-button" href="https://www.vic.gov.au/how-were-supporting-schools-workforce">Explore supports</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section">
+      <h2 class="c-section__title">For teachers and school staff</h2>
+      <div class="c-cards">
+        <a class="c-card" href="https://www.schools.vic.gov.au/schools-vic">
+          <img class="c-card__media" src="/src/img/compare/schools.jpg"
+               alt="A male primary school student and a female teacher work together at a desk.">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Information for schools</h3>
+            <p class="c-card__text">Access to essential resources, including policy information, HR services, professional development opportunities, and teaching materials.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/edupass">
+          <img class="c-card__media" src="/src/img/compare/edupass.jpg" alt="">
+          <div class="c-card__body">
+            <h3 class="c-card__title">eduPass</h3>
+            <p class="c-card__text">Remote access to secure applications and online services.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/protecting-children-mandatory-reporting-and-other-obligations">
+          <img class="c-card__media" src="/src/img/compare/protecting.jpg" alt="">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Protecting children: Mandatory reporting and other obligations</h3>
+            <p class="c-card__text">How to enrol in and complete this online training.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www2.education.vic.gov.au/pal">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Policy and Advisory Library</h3>
+            <p class="c-card__text">Find operational policies and guidance for schools from the Department of Education.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.schools.vic.gov.au/HRWeb-for-schools">
+          <div class="c-card__body">
+            <h3 class="c-card__title">HRWeb for schools</h3>
+            <p class="c-card__text">Human resources information and services for principals, managers and employees.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://edumail.vic.gov.au/">
+          <div class="c-card__body">
+            <h3 class="c-card__title">eduMail (employee email)</h3>
+            <p class="c-card__text">Log into your employee email.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="c-section">
+      <h2 class="c-section__title">What’s happening</h2>
+      <div class="c-cards">
+        <a class="c-card" href="https://www.vic.gov.au/teachthefuture">
+          <img class="c-card__media" src="/src/img/compare/teach-future.jpg"
+               alt="Male teacher with a primary school aged student looking at a tablet.">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Teach the future</h3>
+            <p class="c-card__text">Stay informed about the "Teach the Future" campaign, recruiting more teachers and supporting the existing teaching workforce.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/best-start-best-life-reforms">
+          <img class="c-card__media" src="/src/img/compare/bsbl.jpg"
+               alt="A young Koorie girl smiles with her hands on her hips.">
+          <div class="c-card__body">
+            <h3 class="c-card__title">The Best Start, Best Life reforms</h3>
+            <p class="c-card__text">Learn more about the biggest changes to Victoria’s early childhood education sector in a generation, including significant investment in the kindergarten workforce and infrastructure.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/vce">
+          <img class="c-card__media" src="/src/img/compare/vce.jpg" alt="Teenage girl operating a solar powered drone.">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Your world. Your VCE.</h3>
+            <p class="c-card__text">Secondary school options have expanded to include VCE, VCE Vocational Major and Victorian Pathways Certificate.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="c-section">
+      <h2 class="c-section__title">Contact</h2>
+      <div class="c-cards">
+        <a class="c-card" href="https://www.vic.gov.au/contact-department-education">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Contact us</h3>
+            <p class="c-card__text">Contact details for our offices, regions, accessing school records, freedom of information requests, and how to provide feedback or make a complaint.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/working-department-education">
+          <div class="c-card__body">
+            <h3 class="c-card__title">Conducting business with us</h3>
+            <p class="c-card__text">Information on conducting business with us, including remote access, data requests, fees and fines, procurements, onboarding and data, and hire or licensing school facilities.</p>
+          </div>
+        </a>
+        <a class="c-card" href="https://www.vic.gov.au/school-records">
+          <div class="c-card__body">
+            <h3 class="c-card__title">School records</h3>
+            <p class="c-card__text">Find historical school records and understand how records are kept for Victorian government schools.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="c-tags">
+      <a class="c-chip" href="https://www.vic.gov.au/topic/education-training">Education &amp; training</a>
+      <p class="c-updated">Updated 23 December 2025</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==========================================================================
+     Was this page helpful
+     ========================================================================== -->
+<section class="c-rating">
+  <div class="c-container">
+    <fieldset>
+      <legend>Was this page helpful?</legend>
+      <div class="c-rating__options">
+        <span class="c-rating__option">
+          <input type="radio" id="helpful-yes" name="helpful">
+          <label for="helpful-yes">Yes</label>
+        </span>
+        <span class="c-rating__option">
+          <input type="radio" id="helpful-no" name="helpful">
+          <label for="helpful-no">No</label>
+        </span>
+      </div>
+    </fieldset>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     Footer
+     ========================================================================== -->
+<footer class="c-footer">
+  <div class="c-container">
+    <div class="c-footer__columns">
+
+      <div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Education and training</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Early childhood education and care</a></li>
+            <li><a href="#">School</a></li>
+            <li><a href="#">TAFE and training</a></li>
+            <li><a href="#">Childcare and early learning professionals</a></li>
+            <li><a href="#">Child safety in education</a></li>
+            <li><a href="#">Teachers and school staff</a></li>
+            <li><a href="#">TAFE and higher education sector</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Environment, energy and climate</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Climate action</a></li>
+            <li><a href="#">Energy</a></li>
+            <li><a href="#">Environment</a></li>
+            <li><a href="#">Forest and fire management</a></li>
+            <li><a href="#">Water</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Families and communities</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Families and children</a></li>
+            <li><a href="#">LGBTIQA+ equality</a></li>
+            <li><a href="#">Multicultural</a></li>
+            <li><a href="#">Veterans</a></li>
+            <li><a href="#">Volunteering</a></li>
+            <li><a href="#">Women</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Health and social support</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Disability supports</a></li>
+            <li><a href="#">Family violence</a></li>
+            <li><a href="#">Health and wellbeing services</a></li>
+            <li><a href="#">Seniors</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Housing and construction</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Building safety</a></li>
+            <li><a href="#">Buying a home</a></li>
+            <li><a href="#">Infrastructure and planning</a></li>
+            <li><a href="#">Public housing</a></li>
+            <li><a href="#">Support and advice for renters</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Jobs, work and business</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Training, courses and careers</a></li>
+            <li><a href="#">Industrial relations</a></li>
+            <li><a href="#">Leave and employment conditions</a></li>
+            <li><a href="#">Worker checks</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Law, crime and justice</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Inquiries and royal commissions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Money and economy</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Grants and programs</a></li>
+            <li><a href="#">Insurance</a></li>
+            <li><a href="#">Savings finder</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Safety and emergencies</p>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Sport, recreation and arts</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Arts, culture and history</a></li>
+            <li><a href="#">Sport and outdoor recreation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Technology</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Cybersecurity</a></li>
+            <li><a href="#">Victorian Government IT project dashboard</a></li>
+            <li><a href="#">Wifi and connectivity</a></li>
+            <li><a href="#">Digital strategy and transformation</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Transport</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Roads</a></li>
+            <li><a href="#">Walking, cycling and scooters</a></li>
+            <li><a href="#">Ports and freight</a></li>
+          </ul>
+        </div>
+        <div class="c-footer__group">
+          <p class="c-footer__group-title">Victorian Government</p>
+          <ul class="c-footer__links">
+            <li><a href="#">Find a Vic Gov department, agency or service</a></li>
+            <li><a href="#">Ministers, departments and agencies</a></li>
+            <li><a href="#">Government communications</a></li>
+            <li><a href="#">Living in Victoria</a></li>
+            <li><a href="#">Resources for Victorian Government workers</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c-footer__ack">
+      <div class="c-footer__ack-inner">
+        <span class="c-footer__flags">
+          <svg role="img" aria-label="Australian Aboriginal Flag"><use href="#i-flag-aboriginal"></use></svg>
+          <svg role="img" aria-label="Torres Strait Islander Flag"><use href="#i-flag-torres-strait"></use></svg>
+        </span>
+        <p class="c-footer__ack-text">The Victorian Government acknowledges Aboriginal Traditional Owners
+          of Country throughout Victoria and pays respect to their cultures and Elders past and present.</p>
+      </div>
+    </div>
+
+    <div class="c-footer__core">
+      <div>
+        <ul class="c-footer__required">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Copyright</a></li>
+          <li><a href="#">Freedom of Information</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+        <p class="c-footer__copyright">© Copyright State Government of Victoria</p>
+      </div>
+      <svg class="c-footer__logo" role="img" aria-label="Victoria State Government"><use href="#i-vic-logo"></use></svg>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* The toggle navigates rather than restyling in place, so each theme is a
+     genuine page load — which is what makes the two states directly
+     comparable (and shareable as a URL). */
+  (function () {
+    var root = document.documentElement;
+    var isRipple = root.getAttribute('data-theme') === 'ripple';
+
+    var sw = document.querySelector('[data-theme-toggle]');
+    sw.setAttribute('aria-checked', isRipple ? 'true' : 'false');
+
+    sw.addEventListener('click', function () {
+      /* Record the intent for this tab so the head script honours the
+         parameter it is about to be handed. */
+      try {
+        if (isRipple) sessionStorage.removeItem('compare-toggled');
+        else sessionStorage.setItem('compare-toggled', '1');
+      } catch (e) {}
+
+      location.assign(location.pathname + (isRipple ? '' : '?theme=ripple'));
+    });
+  })();
+</script>
+</body>
+</html>
