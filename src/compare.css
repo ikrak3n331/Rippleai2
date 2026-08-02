@@ -498,9 +498,6 @@ a { color: var(--link); }
 .c-intro__links li + li { margin-top: 16px; }
 
 .c-intro__links a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
   font-size: 20px;
   line-height: 28px;
   color: var(--ink);
@@ -508,12 +505,18 @@ a { color: var(--link); }
 }
 .c-intro__links a:hover { color: var(--link); }
 
+/* The arrow sits with the last word rather than out at the column edge, so a
+   link that runs to two lines carries it on the closing line, as it does on
+   the live page. The gap is the &nbsp; in the markup: a line break is allowed
+   on either side of an inline-block, and without the no-break space a link
+   whose text just fits leaves the arrow stranded on a line of its own.
+   Inline-block also keeps the underline off the arrow. */
 .c-intro__links svg {
+  display: inline-block;
   width: 16px;
   height: 16px;
+  vertical-align: middle;
   fill: var(--link);
-  flex: none;
-  transform: translateY(1px);
 }
 
 /* ==========================================================================

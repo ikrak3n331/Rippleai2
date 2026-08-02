@@ -101,17 +101,24 @@
   color: var(--rpl-type-default);
 }
 .journey a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
   font: 400 20px/28px var(--rpl-font);
   letter-spacing: 0.018em;
   color: var(--rpl-type-default);
   text-decoration: none;
 }
 .journey a:hover { text-decoration: underline; }
-.journey a svg { flex: 0 0 16px; width: 16px; height: 16px; fill: var(--rpl-type-link); }
+/* The arrow belongs to the last word, not to the right-hand edge of the
+   column -- vic.gov.au keeps it in the text flow, so a link that wraps still
+   carries it on the closing line. The gap is the &nbsp; in the markup, which
+   is also what stops a line break falling between the text and the arrow.
+   Inline-block rather than inline so the hover underline stops at the text. */
+.journey a svg {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  fill: var(--rpl-type-link);
+}
 
 @media (min-width: 992px) {
   .intro-banner { padding: 48px 80px 56px; }
