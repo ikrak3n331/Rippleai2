@@ -62,10 +62,11 @@ const TIPS = [
     box: [
       ['Column', 'Capped at --content-inner 1040px, centred'],
       ['Gutters', 'On the band, not the column, so edges align with cards and footer'],
+      ['Height', 'min-height holds the band; the copy centres in it, so a two-line title grows evenly top and bottom'],
     ],
     responsive: [
-      ['≥992', 'padding 212px 80px 80px · title 56/80'],
-      ['<992', 'padding 64px 16px 40px · title 32/48'],
+      ['≥992', 'min-height 424px · padding 40px 80px · title 56/80'],
+      ['<992', 'min-height 200px · padding 40px 16px · title 32/48'],
     ],
   },
 

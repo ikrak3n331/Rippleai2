@@ -12,9 +12,19 @@
 
 /* ---------- Hero header (HeaderTitle/992+/Reverse) ---------- */
 
+/* The band holds its designed height and centres the copy inside it, rather
+   than pinning the copy to the bottom with a top padding tuned per page. A
+   title that runs to two lines then grows evenly top and bottom instead of
+   dropping the whole block down the box. The padding is only the breathing
+   room for copy long enough to outgrow the band; the 1px rule sits inside
+   the min-height, so every hero is a pixel under its design figure and they
+   all still match each other. */
 .hero {
   background: url("./img/ripple-hero.webp") center / cover no-repeat;
-  padding: 64px 16px 40px;
+  display: flex;
+  align-items: center;
+  min-height: 200px;
+  padding: 40px 16px;
   border-bottom: 1px solid var(--rpl-divider);
 }
 
@@ -25,6 +35,7 @@
 /* Gutters live on the band, the column caps at --content-inner, so the hero
    copy starts on the same x as the cards and the footer below it. */
 .hero__inner {
+  width: 100%;              /* a flex item would otherwise shrink to its copy */
   max-width: var(--content-inner);
   margin: 0 auto;
 }
@@ -48,15 +59,9 @@
 }
 
 @media (min-width: 992px) {
-  .hero { padding: 212px 80px 80px; }
+  .hero { min-height: 424px; padding: 40px 80px; }
   .hero__title span { font-size: 56px; line-height: 80px; }
   .hero__intro span { font-size: 24px; line-height: 32px; }
-
-  /* The homepage title runs to two lines where every other hero has one. At
-     80px a line plus the 8px gap that made this band 88px taller than the 424px
-     the design specifies, dropping its copy well below where it sits on every
-     other page. The top padding absorbs the extra line so the heights match. */
-  .hero--home { padding-top: 124px; }
 }
 
 /* ---------- Introduction banner ---------- */

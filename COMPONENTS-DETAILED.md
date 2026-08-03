@@ -765,8 +765,7 @@ a.card:hover .card__heading { text-decoration: underline; }
 }
 
 @media (min-width: 992px) {
-  .hero { padding: 212px 0 80px; }
-  .hero__inner { padding: 0 80px; }
+  .hero { min-height: 424px; padding: 40px 80px; }
   .hero__title span { font-size: 56px; line-height: 80px; }
   .hero__intro span { font-size: 24px; line-height: 32px; }
 }
