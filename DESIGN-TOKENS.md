@@ -105,9 +105,9 @@ letter-spacing: 0.0168em;
 color: var(--rpl-neutral-600);
 ```
 
-**Form Label (Bold 16/24)**
+**Form Label (Medium 16/24)**
 ```css
-font: 700 16px/24px var(--rpl-font);
+font: 500 16px/24px var(--rpl-font);
 letter-spacing: 0.0192em;
 color: var(--rpl-type-default);
 ```

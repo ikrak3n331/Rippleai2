@@ -168,7 +168,7 @@ Menu button toggles `aria-expanded` and `hidden` on the panel. Click-outside and
   align-items: baseline;
   gap: 4px;
   flex-wrap: wrap;
-  font: 700 16px/24px var(--rpl-font);
+  font: 500 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }

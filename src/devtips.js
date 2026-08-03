@@ -243,7 +243,7 @@ const TIPS = [
     name: 'Field block',
     role: 'Label, optional hint, then the control.',
     type: [
-      ['Label', 'VIC SemiBold 16/24 · 0.0192em · Type/Default'],
+      ['Label', 'VIC Medium 16/24 · 0.0192em · Type/Default'],
       ['Required', 'VIC Regular 14/14 · Error #aa0028'],
       ['Hint', 'VIC Regular 14/20 · 0.0192em'],
     ],
