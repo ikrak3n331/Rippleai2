@@ -313,7 +313,7 @@ const TIPS = [
     name: 'Review question / answer',
     role: 'Definition list of submitted answers.',
     type: [
-      ['Question', 'VIC Bold 16/24 · 0.0192em · Type/Default'],
+      ['Question', 'VIC SemiBold 16/24 · 0.0192em · Type/Default'],
       ['Answer', 'VIC Regular 16/24 · 0.0192em'],
     ],
     box: [['Row gap', '16px']],

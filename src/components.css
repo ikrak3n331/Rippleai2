@@ -420,11 +420,12 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
 .summary .accordion__item:has(.accordion__button[aria-expanded="true"]) .summary__edit { display: flex; }
 .summary__edit:hover { text-decoration: none; }
 
-/* Question / answer pairs inside a review section. */
+/* Question / answer pairs inside a review section. The question is SemiBold,
+   not Bold -- Review and submit carries no Bold anywhere. */
 .qa { margin: 0; display: flex; flex-direction: column; gap: 16px; }
 .qa__row { display: grid; grid-template-columns: 1fr; gap: 4px; }
 .qa dt {
-  font: 700 16px/24px var(--rpl-font);
+  font: 600 16px/24px var(--rpl-font);
   letter-spacing: 0.0192em;
   color: var(--rpl-type-default);
 }
