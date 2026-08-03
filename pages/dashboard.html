@@ -17,29 +17,15 @@
 <!--#include partials/banner.html -->
 
 <main id="main-content">
-  <div class="hero hero--short">
-    <div class="hero__inner">
-      <h1 class="hero__title"><span>Page title</span></h1>
-      <p class="hero__intro"><span>Introduction text</span></p>
-    </div>
-  </div>
-
-  <div class="intro-banner">
-    <div class="intro-banner__inner">
-      <div class="intro-banner__main">
-        <!-- Icon kept for reuse — uncomment to restore:
-        <span class="intro-banner__icon"><svg aria-hidden="true"><use href="#i-exclamation-circle"></use></svg></span>
-        -->
-        <div>
-          <h2 class="intro-banner__title">Introduction banner title</h2>
-          <p class="intro-banner__text">This is a paragraph of text that adds information to the page in the introduction banner.</p>
-        </div>
-      </div>
-      <nav class="journey" aria-label="Journey links">
-        <h2 class="journey__heading">Journey link heading</h2>
-        <a href="#"><span class="journey__text">This is a journey <span class="nb">link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></span></span></a>
-        <a href="#"><span class="journey__text">This is a journey <span class="nb">link<svg aria-hidden="true"><use href="#i-arrow-right"></use></svg></span></span></a>
-      </nav>
+  <!-- The logged-in view opens on a plain greeting: no photographic hero and
+       no journey links, so the page starts on the reader's own name and the
+       one action, on the same column as the tabs below. -->
+  <div class="greeting">
+    <div class="greeting__inner">
+      <h1 class="greeting__title">Hello [Name]</h1>
+      <p class="greeting__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut.</p>
+      <a class="btn btn--filled greeting__action" href="#">Button text</a>
     </div>
   </div>
 

@@ -641,11 +641,52 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
   .login__logo { left: 36px; transform: none; }
 }
 
-/* ---------- Dashboard tab band ---------- */
+/* ---------- Dashboard greeting + tab band ---------- */
 
-/* The dashboard hero is 344px rather than the landing page's 424px */
-.hero--short { padding: 48px 0 32px; }
-@media (min-width: 992px) { .hero--short { padding: 150px 0 60px; } }
+/* The logged-in view opens on a plain greeting instead of the photographic
+   hero and introduction banner the other pages carry: white to the edges,
+   salutation, one line of copy, one action. Gutters sit on the band and the
+   column caps at --content-inner, so it starts on the same x as the tabs
+   underneath it and the footer below that. */
+.greeting {
+  background: var(--rpl-neutral-00);
+  padding: 50px 16px 38px;
+}
+@media (min-width: 992px) { .greeting { padding: 58px 80px 70px; } }
+
+.greeting__inner {
+  max-width: var(--content-inner);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Ripple 2.0/H1 -- the one place on the site that uses it. Every other page
+   title in this build is the shared H2 Page Title (32/40); the dashboard
+   greeting is a true H1 instead, at 56/60 on desktop. */
+.greeting__title {
+  margin: 0;
+  font: 500 32px/40px var(--rpl-font);
+  letter-spacing: 0.008em;
+  color: var(--rpl-primary);
+}
+@media (min-width: 992px) { .greeting__title { font-size: 56px; line-height: 60px; } }
+
+.greeting__text {
+  margin: 0;
+  /* Holds the copy to a readable measure, and lands the same two-line break
+     as the design. */
+  max-width: 600px;
+  font: 400 18px/28px var(--rpl-font);
+  letter-spacing: 0.018em;
+  color: var(--rpl-type-default);
+}
+@media (min-width: 992px) { .greeting__text { font-size: 20px; line-height: 32px; } }
+
+/* 16 from the stack plus 12 lands the button 28 under the copy. */
+.greeting__action { margin-top: 12px; text-decoration: none; }
 
 .dash {
   background: var(--rpl-neutral-00);

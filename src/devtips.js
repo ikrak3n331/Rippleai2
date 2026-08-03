@@ -69,6 +69,27 @@ const TIPS = [
     ],
   },
 
+  /* ------------------------------------------------------- dashboard greeting */
+  {
+    sel: '.greeting',
+    name: 'Dashboard greeting',
+    role: 'Opens the logged-in view in place of the hero and introduction banner: salutation, one line of copy, one action.',
+    type: [
+      ['Title', 'VIC Medium 56/60 desktop, 32/40 mobile · 0.008em · Primary #201547'],
+      ['Copy', 'VIC Regular 20/32 desktop, 18/28 mobile · 0.018em · Type/Default'],
+      ['Action', 'Button/Filled — Primary fill, 48px, full lozenge'],
+    ],
+    box: [
+      ['Column', 'Capped at --content-inner 1040px, centred — same x as the tabs below'],
+      ['Stack', '16px between items, 12 more above the button'],
+      ['Measure', 'Copy held to 600px'],
+    ],
+    responsive: [
+      ['≥992', 'padding 58px 80px 70px · title 56/60'],
+      ['<992', 'padding 50px 16px 38px · title 32/40'],
+    ],
+  },
+
   /* -------------------------------------------------------- intro + journey */
   {
     sel: '.journey',
