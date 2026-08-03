@@ -32,31 +32,30 @@
   <main id="main-content" class="login__container">
     <form class="login__content" action="#" method="post">
       <h1 class="login__system">System title</h1>
-      <p class="login__heading">Login</p>
+      <p class="login__heading">Log in</p>
 
       <div class="field login__field">
-        <label class="field__label" for="login-user">
-          Form label <span class="field__required" aria-hidden="true">*</span><span class="sr-only">(required)</span>
-        </label>
-        <span class="field__hint">Hint text</span>
+        <label class="field__label" for="login-user">Username</label>
         <span class="field__control">
-          <input class="input" id="login-user" name="username" type="text"
-                 autocomplete="username" placeholder="Placeholder text" required>
+          <input class="input" id="login-user" name="username" type="email"
+                 autocomplete="username" required>
         </span>
       </div>
 
       <div class="field login__field">
-        <label class="field__label" for="login-pass">
-          Form label <span class="field__required" aria-hidden="true">*</span><span class="sr-only">(required)</span>
-        </label>
-        <span class="field__hint">Hint text</span>
+        <label class="field__label" for="login-pass">Password</label>
         <span class="field__control">
           <input class="input" id="login-pass" name="password" type="password"
-                 autocomplete="current-password" placeholder="Placeholder text" required>
+                 autocomplete="current-password" required>
         </span>
       </div>
 
-      <button type="submit" class="btn btn--filled login__submit">Button text</button>
+      <button type="submit" class="btn btn--filled login__submit">Log in</button>
+
+      <label class="choice login__remember">
+        <input type="checkbox" name="remember" value="1">
+        Remember me
+      </label>
 
       <p class="login__forgot"><a href="#">Forgot password?</a></p>
       <p class="login__register">Not registered? <a href="#">Create an account</a></p>

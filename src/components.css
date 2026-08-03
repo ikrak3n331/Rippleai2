@@ -616,6 +616,11 @@ fieldset.field > legend + .field__control { margin-top: 16px; }
 
 .login__submit { width: 100%; }
 
+/* The stack stretches its items, which would leave the whole width of the
+   card clickable well past the end of "Remember me". Shrink it to its own
+   content so the hit area matches what is on screen. */
+.login__remember { align-self: flex-start; }
+
 /* Password page: the one error the card can show. It sits in the Content
    Area's 20px stack, so it needs no margin of its own. */
 .login__error {
